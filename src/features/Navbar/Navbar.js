@@ -8,6 +8,7 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
+import logo from '../../images/logo-white.png'
 
 
 const navigation = {
@@ -277,10 +278,10 @@ export default function Navbar({Children}) {
 
               {/* Logo */}
               <div className="ml-4 flex lg:ml-0">
-                <a href="#">
+                <Link to="/">
                   <span className="sr-only">Eve Logo</span>
-                  <img className="h-8 w-auto" src="#" alt="" />
-                </a>
+                  <img  src={logo} className="h-14 w-auto"  alt="pookie-image" />
+                </Link>
               </div>
 
               {/* Flyout menus */}

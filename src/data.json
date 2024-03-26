@@ -1,0 +1,509 @@
+[
+    {
+      "id": 0,
+      "name": "PACK OF 2 STRIPED POPLIN BOXERS",
+      "imageSrc": [
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/1063/301/401/2/w/448/1063301401_6_1_1.jpg?ts=1691411229580",
+          "imageAlt": "Image 0 of PACK OF 2 STRIPED POPLIN BOXERS from Zara"
+        },
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/1063/301/401/2/w/448/1063301401_6_2_1.jpg?ts=1690363286583",
+          "imageAlt": "Image 1 of PACK OF 2 STRIPED POPLIN BOXERS from Zara"
+        }
+      ],
+      "price": "£ 22.05",
+      "product_type": "accessories",
+      "size": [{"xxs":true,"xs":false,"s":true,"m":false,"l":false,"xl":true}],
+      "details": "Pack of 2 pairs of boxers made of poplin fabric. Elastic waistband."
+    },
+    {
+      "id": 3,
+      "name": "PACK OF 2 STRIPED POPLIN BOXERS",
+      "imageSrc": [
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/0775/304/555/2/w/448/0775304555_6_1_1.jpg?ts=1685087981331",
+          "imageAlt": "Image 0 of PACK OF 2 STRIPED POPLIN BOXERS from Zara"
+        },
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/0775/304/555/2/w/448/0775304555_6_2_1.jpg?ts=1685087980466",
+          "imageAlt": "Image 1 of PACK OF 2 STRIPED POPLIN BOXERS from Zara"
+        }
+      ],
+      "price": "£ 22.05",
+      "product_type": "accessories",
+      "size": [{"xxs":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}],
+      "details": "Pack of 2 pairs of boxers made of cotton poplin fabric. Elasticated waistband."
+    },
+    {
+      "id": 5,
+      "name": "2-PACK OF SHORT POPLIN BOXERS",
+      "imageSrc": [
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/1063/308/555/2/w/448/1063308555_6_1_1.jpg?ts=1692953919685",
+          "imageAlt": "Image 0 of 2-PACK OF SHORT POPLIN BOXERS from Zara"
+        },
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/1063/308/555/2/w/448/1063308555_6_2_1.jpg?ts=1692953919428",
+          "imageAlt": "Image 1 of 2-PACK OF SHORT POPLIN BOXERS from Zara"
+        }
+      ],
+      "price": "£ 22.05",
+      "product_type": "accessories",
+      "size": [{"xxs":true,"xs":false,"s":true,"m":false,"l":false,"xl":true}],
+      "details": "Pack of 2 pairs of short boxers made of cotton poplin fabric. Elasticated waistband."
+    },
+    {
+      "id": 7,
+      "name": "2-PACK OF BOXERS WITH CUTWORK EMBROIDERY",
+      "imageSrc": [
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/0775/307/555/2/w/448/0775307555_6_1_1.jpg?ts=1688110429483",
+          "imageAlt": "Image 0 of 2-PACK OF BOXERS WITH CUTWORK EMBROIDERY from Zara"
+        },
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/0775/307/555/2/w/448/0775307555_6_2_1.jpg?ts=1688110431990",
+          "imageAlt": "Image 1 of 2-PACK OF BOXERS WITH CUTWORK EMBROIDERY from Zara"
+        }
+      ],
+      "price": "£ 25.35",
+      "product_type": "accessories",
+      "size": [{"xxs":true,"xs":false,"s":true,"m":false,"l":true,"xl":true}],
+      "details": "Pack of 2 pairs of boxers made of poplin. Elasticated waistband. Cutwork embroidery all over the garment."
+    },
+    {
+      "id": 8,
+      "name": "3-PACK OF BASIC BOXERS",
+      "imageSrc": [
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/4442/405/250/2/w/448/4442405250_6_1_1.jpg?ts=1691587305797",
+          "imageAlt": "Image 0 of 3-PACK OF BASIC BOXERS from Zara"
+        },
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/4442/405/250/2/w/448/4442405250_6_2_1.jpg?ts=1691587305823",
+          "imageAlt": "Image 1 of 3-PACK OF BASIC BOXERS from Zara"
+        }
+      ],
+      "price": "£ 22.05",
+      "product_type": "accessories",
+      "size": [{"xxs":true,"xs":false,"s":true,"m":false,"l":false,"xl":true}],
+      "details": "Pack of 3 pairs of boxers with an elastic waistband."
+    },
+    {
+      "id": 10,
+      "name": "FADED LEATHER EFFECT JACKET",
+      "imageSrc": [
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/5070/330/802/2/w/448/5070330802_1_1_1.jpg?ts=1692359829209",
+          "imageAlt": "Image 0 of FADED LEATHER EFFECT JACKET from Zara"
+        },
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/5070/330/802/2/w/448/5070330802_2_1_1.jpg?ts=1692359831238",
+          "imageAlt": "Image 1 of FADED LEATHER EFFECT JACKET from Zara"
+        }
+      ],
+      "price": "£ 75.25",
+      "product_type": "jacket",
+      "size": [
+        {"xxs": false, "xs": true, "s": true, "m": true, "l": true, "xl": false}
+      ],
+      "details": "Faded leather effect jacket. Lapel collar and long sleeves with adjustable zip cuffs. Hip welt pockets with zip fastening. Zip-up front."
+    },
+    {
+      "id": 12,
+      "name": "FAUX LEATHER JACKET",
+      "imageSrc": [
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/3427/320/800/2/w/448/3427320800_1_1_1.jpg?ts=1689335037306",
+          "imageAlt": "Image 0 of FAUX LEATHER JACKET from Zara"
+        },
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/3427/320/800/2/w/448/3427320800_2_1_1.jpg?ts=1689335038340",
+          "imageAlt": "Image 1 of FAUX LEATHER JACKET from Zara"
+        }
+      ],
+      "price": "£ 67.75",
+      "product_type": "jacket",
+      "size": [
+        {"xxs": true, "xs": true, "s": true, "m": true, "l": true, "xl": false}
+      ],
+      "details": "Jacket made of faux leather fabric. Lapel collar with snap-button details. Long sleeves with zip cuffs. Front zip pockets on the chest and hip. Inside pocket. Asymmetric metal zip-up front."
+    },
+    {
+      "id": 14,
+      "name": "FAUX LEATHER BOMBER JACKET",
+      "imageSrc": [
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/3918/420/800/2/w/448/3918420800_1_1_1.jpg?ts=1687947015813",
+          "imageAlt": "Image 0 of FAUX LEATHER BOMBER JACKET from Zara"
+        },
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/3918/420/800/2/w/448/3918420800_2_1_1.jpg?ts=1687947015911",
+          "imageAlt": "Image 1 of FAUX LEATHER BOMBER JACKET from Zara"
+        }
+      ],
+      "price": "£ 49.75",
+      "product_type": "jacket",
+      "size": [
+        {"xxs": false, "xs": true, "s": true, "m": true, "l": true, "xl": false}
+      ],
+      "details": "Jacket made of faux leather fabric. High neck and long sleeves. Welt pockets at the hip and interior pocket detail. Ribbed trims. Front zip fastening."
+    },
+    {
+      "id": 15,
+      "name": "FAUX LEATHER JACKET",
+      "imageSrc": [
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/8281/306/800/2/w/448/8281306800_2_1_1.jpg?ts=1688382311087",
+          "imageAlt": "Image 0 of FAUX LEATHER JACKET from Zara"
+        },
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/8281/306/800/2/w/448/8281306800_2_5_1.jpg?ts=1688382311087",
+          "imageAlt": "Image 1 of FAUX LEATHER JACKET from Zara"
+        }
+      ],
+      "price": "£ 75.25",
+      "product_type": "jacket",
+      "size": [
+        {"xxs": false, "xs": true, "s": true, "m": true, "l": true, "xl": false}
+      ],
+      "details": "Collared jacket with long sleeves and elasticated cuffs. Welt pockets on the chest and hip. Ribbed hem. Zip-up front."
+    },{
+      "id": 20,
+      "name": "PADDED JACKET WITH POCKETS",
+      "imageSrc": [
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/1/p/4088/242/800/2/w/448/4088242800_1_1_1.jpg?ts=1691658771413",
+          "imageAlt": "Image 0 of PADDED JACKET WITH POCKETS from Zara"
+        },
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/1/p/4088/242/800/2/w/448/4088242800_2_1_1.jpg?ts=1691658771801",
+          "imageAlt": "Image 1 of PADDED JACKET WITH POCKETS from Zara"
+        }
+      ],
+      "price": "£78.35",
+      "product_type": "jacket",
+      "size": [{"xxs": false}, {"xs": false}, {"s": false}, {"m": false}, {"l": true}, {"xl": false}],
+      "details": "Padded jacket with a high neck and long sleeves, Front patch pockets. Adjustable hem with matching drawstrings. Front zip fastening."
+    },
+    {
+      "id": 21,
+      "name": "WOOL BOMBER JACKET WITH ZIP",
+      "imageSrc": [
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/1/p/2893/108/704/2/w/448/2893108704_1_1_1.jpg?ts=1693224696563",
+          "imageAlt": "Image 0 of WOOL BOMBER JACKET WITH ZIP from Zara"
+        },
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/1/p/2893/108/704/2/w/448/2893108704_2_1_1.jpg?ts=1693224696588",
+          "imageAlt": "Image 1 of WOOL BOMBER JACKET WITH ZIP from Zara"
+        }
+      ],
+      "price": "£78.35",
+      "product_type": "jacket",
+      "size": [{"xxs": true}, {"xs": false}, {"s": false}, {"m": false}, {"l": false}, {"xl": false}],
+      "details": "Bomber jacket made of 100% wool. Featuring a V-neckline and long sleeves. Front pockets. Ribbed trims. Metal zip fastening at the front."
+    },
+    {
+      "id": 22,
+      "name": "SATIN KIMONO",
+      "imageSrc": [
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/1/p/1131/805/804/2/w/448/1131805804_1_1_1.jpg?ts=1692274456448",
+          "imageAlt": "Image 0 of SATIN KIMONO from Zara"
+        },
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/1/p/1131/805/804/2/w/448/1131805804_2_1_1.jpg?ts=1692274456807",
+          "imageAlt": "Image 1 of SATIN KIMONO from Zara"
+        }
+      ],
+      "price": "£32.57",
+      "product_type": "jacket",
+      "size": [{"xxs": false}, {"xs": false}, {"s": true}, {"m": false}, {"l": false}, {"xl": false}],
+      "details": "Kimono made of satin fabric. Featuring a crossover V-neckline, long sleeves with vents and crossover fastening with tied detail in the same fabric"
+    },
+    {
+      "id": 23,
+      "name": "TRANSPARENT CROPPED JACKET",
+      "imageSrc": [
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/1/p/1255/817/990/2/w/448/1255817990_1_1_1.jpg?ts=1692874440525",
+          "imageAlt": "Image 0 of TRANSPARENT CROPPED JACKET from Zara"
+        },
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/1/p/1255/817/990/2/w/448/1255817990_2_1_1.jpg?ts=1692874444557",
+          "imageAlt": "Image 1 of TRANSPARENT CROPPED JACKET from Zara"
+        }
+      ],
+      "price": "£44.28",
+      "product_type": "jacket",
+      "size": [{"xxs": false}, {"xs": false}, {"s": false}, {"m": false}, {"l": true}, {"xl": false}],
+      "details": "Transparent collared water-repellent jacket. Featuring long sleeves with tabs on the shoulders. Front pockets with zips, a belt in the same material with a rubberised buckle and crossover zip fastening at the front."
+    },
+    {
+      "id": 24,
+      "name": "SATIN FOIL BOMBER JACKET",
+      "imageSrc": [
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/1/p/8495/350/808/2/w/448/8495350808_1_1_1.jpg?ts=1692884607713",
+          "imageAlt": "Image 0 of SATIN FOIL BOMBER JACKET from Zara"
+        },
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/1/p/8495/350/808/2/w/448/8495350808_2_1_1.jpg?ts=1692884606898",
+          "imageAlt": "Image 1 of SATIN FOIL BOMBER JACKET from Zara"
+        }
+      ],
+      "price": "£44.28",
+      "product_type": "jacket",
+      "size": [{"xxs": false}, {"xs": false}, {"s": false}, {"m": true}, {"l": false}, {"xl": false}],
+      "details": "Bomber jacket made of metallic satin fabric. Round neck and long sleeves with elastic cuffs. Front welt pockets. Elastic hem. Contrast lining. Front fastening with metal zip."
+    },{
+      "id": 30,
+      "name": "BLOUSE WITH JABOT FRILLS AND PEARL BEAD BUTTONS",
+      "imageSrc": [
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/1/p/7969/230/250/2/w/448/7969230250_1_1_1.jpg?ts=1692889132974",
+          "imageAlt": "Image 0 of BLOUSE WITH JABOT FRILLS AND PEARL BEAD BUTTONS from Zara"
+        },
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/1/p/7969/230/250/2/w/448/7969230250_2_1_1.jpg?ts=1692889132926",
+          "imageAlt": "Image 1 of BLOUSE WITH JABOT FRILLS AND PEARL BEAD BUTTONS from Zara"
+        }
+      ],
+      "price": "£29.90",
+      "product_type": "tops",
+      "size": [{"xxs": false}, {"xs": false}, {"s": false}, {"m": true}, {"l": false}, {"xl": false}],
+      "details": "Collared blouse featuring long sleeves with slit cuffs. Jabot frills on the front. Button-up front hidden by a button placket and pearl bead appliqués on the collar and cuffs."
+    },
+    {
+      "id": 31,
+      "name": "OXFORD SHIRT",
+      "imageSrc": [
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/1/p/8372/290/043/2/w/448/8372290043_1_1_1.jpg?ts=1691149126067",
+          "imageAlt": "Image 0 of OXFORD SHIRT from Zara"
+        },
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/1/p/8372/290/043/2/w/448/8372290043_2_1_1.jpg?ts=1691149127390",
+          "imageAlt": "Image 1 of OXFORD SHIRT from Zara"
+        }
+      ],
+      "price": "£25.90",
+      "product_type": "tops",
+      "size": [{"xxs": false}, {"xs": false}, {"s": false}, {"m": false}, {"l": true}, {"xl": false}],
+      "details": "Shirt with a johnny collar, long sleeves and a button-up front."
+    },
+    {
+      "id": 32,
+      "name": "SEMI-SHEER RHINESTONE SHIRT",
+      "imageSrc": [
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/1/p/7484/162/712/2/w/448/7484162712_1_1_1.jpg?ts=1692879489420",
+          "imageAlt": "Image 0 of SEMI-SHEER RHINESTONE SHIRT from Zara"
+        },
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/1/p/7484/162/712/2/w/448/7484162712_2_1_1.jpg?ts=1692879489288",
+          "imageAlt": "Image 1 of SEMI-SHEER RHINESTONE SHIRT from Zara"
+        }
+      ],
+      "price": "£32.90",
+      "product_type": "tops",
+      "size": [{"xxs": false}, {"xs": true}, {"s": false}, {"m": false}, {"l": false}, {"xl": false}],
+      "details": "Semi-sheer collared shirt with long cuffed sleeves and front fastening with rhinestone buttons."
+    },
+    {
+      "id": 34,
+      "name": "PRINTED TOP WITH GATHERED DETAIL",
+      "imageSrc": [
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/1/p/8562/716/018/2/w/448/8562716018_1_1_1.jpg?ts=1692779345552",
+          "imageAlt": "Image 0 of PRINTED TOP WITH GATHERED DETAIL from Zara"
+        },
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/1/p/8562/716/018/2/w/448/8562716018_2_1_1.jpg?ts=1692779344582",
+          "imageAlt": "Image 1 of PRINTED TOP WITH GATHERED DETAIL from Zara"
+        }
+      ],
+      "price": "£29.90",
+      "product_type": "tops",
+      "size": [{"xxs": false}, {"xs": false}, {"s": true}, {"m": false}, {"l": false}, {"xl": false}],
+      "details": "Top with a surplice neck featuring long sleeves with cuffs and an elasticated hem."
+    },
+    {
+      "id": 35,
+      "name": "CONTRAST SHIRT",
+      "imageSrc": [
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/1/p/3564/191/712/2/w/448/3564191712_6_1_1.jpg?ts=1692950069091",
+          "imageAlt": "Image 0 of CONTRAST SHIRT from Zara"
+        },
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/1/p/3564/191/712/2/w/448/3564191712_6_2_1.jpg?ts=1692950069045",
+          "imageAlt": "Image 1 of CONTRAST SHIRT from Zara"
+        }
+      ],
+      "price": "£29.90",
+      "product_type": "tops",
+      "size": [{"xxs": false}, {"xs": false}, {"s": false}, {"m": false}, {"l": false}, {"xl": true}],
+      "details": "Collared shirt with long cuffed sleeves. Contrast fabric detail on the collar and cuffs. Front fastening with metal buttons."
+    },{
+      "id": 40,
+      "name": "HEAT-REACTIVE PRINT T-SHIRT",
+      "imageSrc": [
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/3992/321/802/2/w/448/3992321802_1_1_1.jpg?ts=1692951284701",
+          "imageAlt": "Image 0 of HEAT-REACTIVE PRINT T-SHIRT from Zara"
+        },
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/3992/321/802/2/w/448/3992321802_2_1_1.jpg?ts=1692951287543",
+          "imageAlt": "Image 1 of HEAT-REACTIVE PRINT T-SHIRT from Zara"
+        }
+      ],
+      "price": "£ 25.13",
+      "product_type": "tops",
+      "size": [{"xxs":true,"xs":true,"s":true,"m":false,"l":false,"xl":false}],
+      "details": "Loose-fitting T-shirt with a round neck and short sleeves. Featuring a front print that changes colour when exposed to heat."
+    },
+    {
+      "id": 43,
+      "name": "T-SHIRT WITH SUNLIGHT-REACTIVE SLOGAN",
+      "imageSrc": [
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/3992/319/982/2/w/448/3992319982_1_1_1.jpg?ts=1692951283852",
+          "imageAlt": "Image 0 of T-SHIRT WITH SUNLIGHT-REACTIVE SLOGAN from Zara"
+        },
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/3992/319/982/2/w/448/3992319982_2_1_1.jpg?ts=1692951288053",
+          "imageAlt": "Image 1 of T-SHIRT WITH SUNLIGHT-REACTIVE SLOGAN from Zara"
+        }
+      ],
+      "price": "£ 25.13",
+      "product_type": "tops",
+      "size": [{"xxs":true,"xs":true,"s":true,"m":false,"l":false,"xl":false}],
+      "details": "Loose-fitting T-shirt with a round neck and short sleeves. Featuring a front slogan print that appears when exposed to sunlight."
+    },
+    {
+      "id": 46,
+      "name": "SWEATSHIRT WITH PRINTED SLOGANS",
+      "imageSrc": [
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/0722/355/802/2/w/448/0722355802_1_1_1.jpg?ts=1692951281874",
+          "imageAlt": "Image 0 of SWEATSHIRT WITH PRINTED SLOGANS from Zara"
+        },
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/0722/355/802/2/w/448/0722355802_2_1_1.jpg?ts=1692951290853",
+          "imageAlt": "Image 1 of SWEATSHIRT WITH PRINTED SLOGANS from Zara"
+        }
+      ],
+      "price": "£ 29.47",
+      "product_type": "tops",
+      "size": [{"xxs":true,"xs":true,"s":true,"m":false,"l":false,"xl":false}],
+      "details": "Loose-fitting sweatshirt with a round neck and short sleeves. Featuring a contrast slogan print all over the garment."
+    },
+    {
+      "id": 47,
+      "name": "CONTRAST PRINTED T-SHIRT",
+      "imageSrc": [
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/6224/298/251/2/w/448/6224298251_1_1_1.jpg?ts=1692951283692",
+          "imageAlt": "Image 0 of CONTRAST PRINTED T-SHIRT from Zara"
+        },
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/6224/298/251/2/w/448/6224298251_2_1_1.jpg?ts=1692951287258",
+          "imageAlt": "Image 1 of CONTRAST PRINTED T-SHIRT from Zara"
+        }
+      ],
+      "price": "£ 25.13",
+      "product_type": "tops",
+      "size": [{"xxs":true,"xs":true,"s":true,"m":false,"l":false,"xl":false}],
+      "details": "T-shirt with a round neckline and short sleeves. Contrast prints on the front and back."
+    },
+    {
+      "id": 49,
+      "name": "SWEATSHIRT WITH EMBROIDERY AND SLOGANS",
+      "imageSrc": [
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/6224/297/251/2/w/448/6224297251_1_1_1.jpg?ts=1692960481437",
+          "imageAlt": "Image 0 of SWEATSHIRT WITH EMBROIDERY AND SLOGANS from Zara"
+        },
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/6224/297/251/2/w/448/6224297251_2_1_1.jpg?ts=1692960481868",
+          "imageAlt": "Image 1 of SWEATSHIRT WITH EMBROIDERY AND SLOGANS from Zara"
+        }
+      ],
+      "price": "£ 29.47",
+      "product_type": "tops",
+      "size": [{"xxs":true,"xs":true,"s":true,"m":false,"l":false,"xl":false}],
+      "details": "Round neck sweatshirt with short sleeves. Contrast embroidery and prints on the front and back. Ribbed trims."
+    },{
+      "id": 50,
+      "name": "WIDE-FIT KNIT JOGGERS",
+      "imageSrc": [
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/5755/301/800/2/w/448/5755301800_1_1_1.jpg?ts=1692951284336",
+          "imageAlt": "Image 0 of WIDE-FIT KNIT JOGGERS from Zara"
+        },
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/5755/301/800/2/w/448/5755301800_2_1_1.jpg?ts=1692951287061",
+          "imageAlt": "Image 1 of WIDE-FIT KNIT JOGGERS from Zara"
+        }
+      ],
+      "price": "£35.33",
+      "product_type": "bottom",
+      "size": [{"xxs":false,"xs":true,"s":true,"m":true,"l":false,"xl":false}],
+      "details": "Knit trousers with an adjustable elasticated waistband. Side pockets and rear pocket detail."
+    },
+    {
+      "id": 58,
+      "name": "SLIM FIT CARGO TROUSERS",
+      "imageSrc": [
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/9252/300/800/2/w/448/9252300800_1_1_1.jpg?ts=1691144900170",
+          "imageAlt": "Image 0 of SLIM FIT CARGO TROUSERS from Zara"
+        },
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/9252/300/800/2/w/448/9252300800_2_1_1.jpg?ts=1691144901614",
+          "imageAlt": "Image 1 of SLIM FIT CARGO TROUSERS from Zara"
+        }
+      ],
+      "price": "£39.33",
+      "product_type": "bottom",
+      "size": [{"xxs":false,"xs":true,"s":true,"m":true,"l":false,"xl":false}],
+      "details": "Slim fit trousers. Front pockets and rear pocket details. Patch pockets with flaps on the legs. Front zip fly and button fastening."
+    },
+    {
+      "id": 63,
+      "name": "STRAIGHT FIT CARGO TROUSERS",
+      "imageSrc": [
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/6917/306/818/2/w/448/6917306818_2_1_1.jpg?ts=1691079127613",
+          "imageAlt": "Image 0 of STRAIGHT FIT CARGO TROUSERS from Zara"
+        },
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/6917/306/818/2/w/0/6917306818_1_1_1.jpg?ts=1691079126929",
+          "imageAlt": "Image 1 of STRAIGHT FIT CARGO TROUSERS from Zara"
+        }
+      ],
+      "price": "£39.33",
+      "product_type": "bottom",
+      "size": [{"xxs":false,"xs":true,"s":true,"m":true,"l":false,"xl":false}],
+      "details": "Straight fit trousers. Front pockets and back flap pockets. Patch pockets with flaps on the legs. Adjustable hems with tab. Front zip fly and button fastening."
+    },
+    {
+      "id": 65,
+      "name": "PLEATED TROUSERS",
+      "imageSrc": [
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/6332/616/807/2/w/448/6332616807_1_1_1.jpg?ts=1692959379367",
+          "imageAlt": "Image 0 of PLEATED TROUSERS from Zara"
+        },
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/6332/616/807/2/w/448/6332616807_2_1_1.jpg?ts=1692959379397",
+          "imageAlt": "Image 1 of PLEATED TROUSERS from Zara"
+        }
+      ],
+      "price": "£49.33",
+      "product_type": "bottom",
+      "size": [{"xxs":false,"xs":true,"s":true,"m":true,"l":false,"xl":false}],
+      "details": "Relaxed fit trousers. Waistband with front pleated details. Front pockets and rear welt pockets. Front zip fly and button fastening."
+    }]
