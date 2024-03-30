@@ -1,44 +1,36 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { fetchCount } from '../product-list/ProductApi';
+import { fetchAllProducts } from '../product-list/ProductApi';
 
-const initialState = {
-  value: 0,
-  status: 'idle',
-};
-
-export const incrementAsync = createAsyncThunk(
-  'counter/fetchCount',
-  async (amount) => {
-    const response = await fetchCount(amount);
-    // The value we return becomes the `fulfilled` action payload
+export const fetchAllProductsAsync = createAsyncThunk(
+  'product/fetchAllProducts',
+  async () => {
+    const response = await fetchAllProducts();
     return response.data;
   }
 );
 
-export const counterSlice = createSlice({
-  name: 'counter',
-  initialState,
-  // The `reducers` field lets us define reducers and generate associated actions
-  reducers: {
-    increment: (state) => {
-      state.value += 1;
-    },
+const productSlice = createSlice({
+  name: 'product',
+  initialState: {
+    products: [],
+    status: 'idle',
   },
-
   extraReducers: (builder) => {
     builder
-      .addCase(incrementAsync.pending, (state) => {
+      .addCase(fetchAllProductsAsync.pending, (state) => {
         state.status = 'loading';
       })
-      .addCase(incrementAsync.fulfilled, (state, action) => {
+      .addCase(fetchAllProductsAsync.fulfilled, (state, action) => {
         state.status = 'idle';
-        state.value += action.payload;
+        state.products = action.payload;
+      })
+      .addCase(fetchAllProductsAsync.rejected, (state) => {
+        state.status = 'failed';
       });
   },
 });
 
-export const { increment} = counterSlice.actions;
+export const selectAllProducts = (state) => state.product.products;
+export const selectProductsStatus = (state) => state.product.status;
 
-export const selectCount = (state) => state.counter.value;
-
-export default counterSlice.reducer;
+export default productSlice.reducer;

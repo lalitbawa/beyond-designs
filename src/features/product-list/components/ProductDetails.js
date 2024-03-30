@@ -42,10 +42,6 @@ const product = {
     <p>Looking to stock your closet? The Basic tee also comes in a 3-pack or 5-pack at a bundle discount.</p>
   `,
 }
-const policies = [
-  { name: 'International delivery', icon: GlobeAmericasIcon, description: 'Get your order in 2 years' },
-  { name: 'Loyalty rewards', icon: CurrencyDollarIcon, description: "Don't look at other tees" },
-]
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')

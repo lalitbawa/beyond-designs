@@ -15,7 +15,8 @@
       "price": "£ 22.05",
       "product_type": "accessories",
       "size": [{"xxs":true,"xs":false,"s":true,"m":false,"l":false,"xl":true}],
-      "details": "Pack of 2 pairs of boxers made of poplin fabric. Elastic waistband."
+      "details": "Pack of 2 pairs of boxers made of poplin fabric. Elastic waistband.",
+      "season": "summer"
     },
     {
       "id": 3,
@@ -33,7 +34,8 @@
       "price": "£ 22.05",
       "product_type": "accessories",
       "size": [{"xxs":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}],
-      "details": "Pack of 2 pairs of boxers made of cotton poplin fabric. Elasticated waistband."
+      "details": "Pack of 2 pairs of boxers made of cotton poplin fabric. Elasticated waistband.",
+      "season": "summer"
     },
     {
       "id": 5,
@@ -51,7 +53,8 @@
       "price": "£ 22.05",
       "product_type": "accessories",
       "size": [{"xxs":true,"xs":false,"s":true,"m":false,"l":false,"xl":true}],
-      "details": "Pack of 2 pairs of short boxers made of cotton poplin fabric. Elasticated waistband."
+      "details": "Pack of 2 pairs of short boxers made of cotton poplin fabric. Elasticated waistband.",
+      "season": "summer"
     },
     {
       "id": 7,
@@ -69,7 +72,8 @@
       "price": "£ 25.35",
       "product_type": "accessories",
       "size": [{"xxs":true,"xs":false,"s":true,"m":false,"l":true,"xl":true}],
-      "details": "Pack of 2 pairs of boxers made of poplin. Elasticated waistband. Cutwork embroidery all over the garment."
+      "details": "Pack of 2 pairs of boxers made of poplin. Elasticated waistband. Cutwork embroidery all over the garment.",
+      "season": "summer"
     },
     {
       "id": 8,
@@ -87,7 +91,8 @@
       "price": "£ 22.05",
       "product_type": "accessories",
       "size": [{"xxs":true,"xs":false,"s":true,"m":false,"l":false,"xl":true}],
-      "details": "Pack of 3 pairs of boxers with an elastic waistband."
+      "details": "Pack of 3 pairs of boxers with an elastic waistband.",
+      "season": "summer"
     },
     {
       "id": 10,
@@ -108,6 +113,7 @@
         {"xxs": false, "xs": true, "s": true, "m": true, "l": true, "xl": false}
       ],
       "details": "Faded leather effect jacket. Lapel collar and long sleeves with adjustable zip cuffs. Hip welt pockets with zip fastening. Zip-up front."
+      ,"season": "winter"
     },
     {
       "id": 12,
@@ -128,6 +134,7 @@
         {"xxs": true, "xs": true, "s": true, "m": true, "l": true, "xl": false}
       ],
       "details": "Jacket made of faux leather fabric. Lapel collar with snap-button details. Long sleeves with zip cuffs. Front zip pockets on the chest and hip. Inside pocket. Asymmetric metal zip-up front."
+      ,"season": "winter"
     },
     {
       "id": 14,
@@ -148,6 +155,7 @@
         {"xxs": false, "xs": true, "s": true, "m": true, "l": true, "xl": false}
       ],
       "details": "Jacket made of faux leather fabric. High neck and long sleeves. Welt pockets at the hip and interior pocket detail. Ribbed trims. Front zip fastening."
+      ,"season": "winter"
     },
     {
       "id": 15,
@@ -168,6 +176,7 @@
         {"xxs": false, "xs": true, "s": true, "m": true, "l": true, "xl": false}
       ],
       "details": "Collared jacket with long sleeves and elasticated cuffs. Welt pockets on the chest and hip. Ribbed hem. Zip-up front."
+      ,"season": "winter"
     },{
       "id": 20,
       "name": "PADDED JACKET WITH POCKETS",
@@ -185,6 +194,7 @@
       "product_type": "jacket",
       "size": [{"xxs": false}, {"xs": false}, {"s": false}, {"m": false}, {"l": true}, {"xl": false}],
       "details": "Padded jacket with a high neck and long sleeves, Front patch pockets. Adjustable hem with matching drawstrings. Front zip fastening."
+      ,"season": "winter"
     },
     {
       "id": 21,
@@ -203,6 +213,7 @@
       "product_type": "jacket",
       "size": [{"xxs": true}, {"xs": false}, {"s": false}, {"m": false}, {"l": false}, {"xl": false}],
       "details": "Bomber jacket made of 100% wool. Featuring a V-neckline and long sleeves. Front pockets. Ribbed trims. Metal zip fastening at the front."
+      ,"season": "winter"
     },
     {
       "id": 22,
@@ -221,6 +232,7 @@
       "product_type": "jacket",
       "size": [{"xxs": false}, {"xs": false}, {"s": true}, {"m": false}, {"l": false}, {"xl": false}],
       "details": "Kimono made of satin fabric. Featuring a crossover V-neckline, long sleeves with vents and crossover fastening with tied detail in the same fabric"
+      ,"season": "winter"
     },
     {
       "id": 23,
@@ -239,6 +251,7 @@
       "product_type": "jacket",
       "size": [{"xxs": false}, {"xs": false}, {"s": false}, {"m": false}, {"l": true}, {"xl": false}],
       "details": "Transparent collared water-repellent jacket. Featuring long sleeves with tabs on the shoulders. Front pockets with zips, a belt in the same material with a rubberised buckle and crossover zip fastening at the front."
+      ,"season": "winter"
     },
     {
       "id": 24,
@@ -257,6 +270,7 @@
       "product_type": "jacket",
       "size": [{"xxs": false}, {"xs": false}, {"s": false}, {"m": true}, {"l": false}, {"xl": false}],
       "details": "Bomber jacket made of metallic satin fabric. Round neck and long sleeves with elastic cuffs. Front welt pockets. Elastic hem. Contrast lining. Front fastening with metal zip."
+      ,"season": "summer"
     },{
       "id": 30,
       "name": "BLOUSE WITH JABOT FRILLS AND PEARL BEAD BUTTONS",
@@ -274,6 +288,7 @@
       "product_type": "tops",
       "size": [{"xxs": false}, {"xs": false}, {"s": false}, {"m": true}, {"l": false}, {"xl": false}],
       "details": "Collared blouse featuring long sleeves with slit cuffs. Jabot frills on the front. Button-up front hidden by a button placket and pearl bead appliqués on the collar and cuffs."
+      ,"season": "summer"
     },
     {
       "id": 31,
@@ -292,6 +307,7 @@
       "product_type": "tops",
       "size": [{"xxs": false}, {"xs": false}, {"s": false}, {"m": false}, {"l": true}, {"xl": false}],
       "details": "Shirt with a johnny collar, long sleeves and a button-up front."
+      ,"season": "summer"
     },
     {
       "id": 32,
@@ -310,6 +326,7 @@
       "product_type": "tops",
       "size": [{"xxs": false}, {"xs": true}, {"s": false}, {"m": false}, {"l": false}, {"xl": false}],
       "details": "Semi-sheer collared shirt with long cuffed sleeves and front fastening with rhinestone buttons."
+      ,"season": "summer"
     },
     {
       "id": 34,
@@ -328,6 +345,7 @@
       "product_type": "tops",
       "size": [{"xxs": false}, {"xs": false}, {"s": true}, {"m": false}, {"l": false}, {"xl": false}],
       "details": "Top with a surplice neck featuring long sleeves with cuffs and an elasticated hem."
+      ,"season": "winter"
     },
     {
       "id": 35,
@@ -346,6 +364,7 @@
       "product_type": "tops",
       "size": [{"xxs": false}, {"xs": false}, {"s": false}, {"m": false}, {"l": false}, {"xl": true}],
       "details": "Collared shirt with long cuffed sleeves. Contrast fabric detail on the collar and cuffs. Front fastening with metal buttons."
+      ,"season": "summer"
     },{
       "id": 40,
       "name": "HEAT-REACTIVE PRINT T-SHIRT",
@@ -363,6 +382,7 @@
       "product_type": "tops",
       "size": [{"xxs":true,"xs":true,"s":true,"m":false,"l":false,"xl":false}],
       "details": "Loose-fitting T-shirt with a round neck and short sleeves. Featuring a front print that changes colour when exposed to heat."
+      ,"season": "summer"
     },
     {
       "id": 43,
@@ -381,6 +401,7 @@
       "product_type": "tops",
       "size": [{"xxs":true,"xs":true,"s":true,"m":false,"l":false,"xl":false}],
       "details": "Loose-fitting T-shirt with a round neck and short sleeves. Featuring a front slogan print that appears when exposed to sunlight."
+      ,"season": "summer"
     },
     {
       "id": 46,
@@ -399,6 +420,7 @@
       "product_type": "tops",
       "size": [{"xxs":true,"xs":true,"s":true,"m":false,"l":false,"xl":false}],
       "details": "Loose-fitting sweatshirt with a round neck and short sleeves. Featuring a contrast slogan print all over the garment."
+      ,"season": "summer"
     },
     {
       "id": 47,
@@ -417,6 +439,7 @@
       "product_type": "tops",
       "size": [{"xxs":true,"xs":true,"s":true,"m":false,"l":false,"xl":false}],
       "details": "T-shirt with a round neckline and short sleeves. Contrast prints on the front and back."
+      ,"season": "summer"
     },
     {
       "id": 49,
@@ -435,6 +458,7 @@
       "product_type": "tops",
       "size": [{"xxs":true,"xs":true,"s":true,"m":false,"l":false,"xl":false}],
       "details": "Round neck sweatshirt with short sleeves. Contrast embroidery and prints on the front and back. Ribbed trims."
+      ,"season": "summer"
     },{
       "id": 50,
       "name": "WIDE-FIT KNIT JOGGERS",
@@ -452,6 +476,7 @@
       "product_type": "bottom",
       "size": [{"xxs":false,"xs":true,"s":true,"m":true,"l":false,"xl":false}],
       "details": "Knit trousers with an adjustable elasticated waistband. Side pockets and rear pocket detail."
+      ,"season": "winter"
     },
     {
       "id": 58,
@@ -470,6 +495,7 @@
       "product_type": "bottom",
       "size": [{"xxs":false,"xs":true,"s":true,"m":true,"l":false,"xl":false}],
       "details": "Slim fit trousers. Front pockets and rear pocket details. Patch pockets with flaps on the legs. Front zip fly and button fastening."
+      ,"season": "winter"
     },
     {
       "id": 63,
@@ -488,6 +514,7 @@
       "product_type": "bottom",
       "size": [{"xxs":false,"xs":true,"s":true,"m":true,"l":false,"xl":false}],
       "details": "Straight fit trousers. Front pockets and back flap pockets. Patch pockets with flaps on the legs. Adjustable hems with tab. Front zip fly and button fastening."
+      ,"season": "winter"
     },
     {
       "id": 65,
@@ -506,4 +533,5 @@
       "product_type": "bottom",
       "size": [{"xxs":false,"xs":true,"s":true,"m":true,"l":false,"xl":false}],
       "details": "Relaxed fit trousers. Waistband with front pleated details. Front pockets and rear welt pockets. Front zip fly and button fastening."
+      ,"season": "winter"
     }]
