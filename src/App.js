@@ -1,7 +1,4 @@
-import Counter from './features/counter/Counter';
 import './App.css';
-import ProductList from './features/product-list/components/ProductList';
-import Navbar from './features/Navbar/Navbar';
 import LandingPage from './pages/LandingPage';
 import Home from './pages/Home';
 import LoginPage from './pages/LoginPage';
@@ -13,7 +10,6 @@ import {
 import CartPage from './pages/CartPage';
 import Checkout from './pages/Checkout'
 import ProductDetailPage from './pages/ProductDetailPage';
-import Footer from './features/Footer/Footer';
 
 const router = createBrowserRouter([
   {
@@ -41,7 +37,7 @@ const router = createBrowserRouter([
     element: <Checkout></Checkout>,
   },
   {
-    path: "productdetails",
+    path: "productdetails/:productId",
     element: <ProductDetailPage></ProductDetailPage>,
   },
 ]);
