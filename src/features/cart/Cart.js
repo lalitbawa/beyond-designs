@@ -1,53 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  increment,
-  incrementAsync,
-  selectCount,
-} from './cartSlice';
+import { selectItems, updateCartAsync, deleteItemFromCartAsync } from './cartSlice';
 import { Link } from 'react-router-dom';
+import { XMarkIcon } from '@heroicons/react/20/solid';
+import { useNavigate } from 'react-router-dom';
 
-import { CheckIcon, ClockIcon, QuestionMarkCircleIcon, XMarkIcon } from '@heroicons/react/20/solid'
-
-const products = [
-  {
-    id: 1,
-    name: 'Basic Tee',
-    href: '#',
-    price: '$32.00',
-    color: 'Sienna',
-    inStock: true,
-    size: 'Large',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-01-product-01.jpg',
-    imageAlt: "Front of men's Basic Tee in sienna.",
-  },
-  {
-    id: 2,
-    name: 'Basic Tee',
-    href: '#',
-    price: '$32.00',
-    color: 'Black',
-    inStock: false,
-    leadTime: '3–4 weeks',
-    size: 'Large',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-01-product-02.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
-  },
-  {
-    id: 3,
-    name: 'Nomad Tumbler',
-    href: '#',
-    price: '$35.00',
-    color: 'White',
-    inStock: true,
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-01-product-03.jpg',
-    imageAlt: 'Insulated bottle with white base and black snap lid.',
-  },
-]
-
-export default function Counter() {
-  const count = useSelector(selectCount);
+export default function Cart() {
+  const items = useSelector(selectItems);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const getTotalPrice = () => {
+    return items.reduce((total, item) => total + parseFloat(item.price.replace('£', '')) * item.quantity, 0);
+  };
+
+  const getTotalItems = () => {
+    return items.reduce((total, item) => total + item.quantity, 0);
+  };
+
+  const handleQuantityChange = (itemId, quantity) => {
+    dispatch(updateCartAsync({ id: itemId, quantity }));
+  };
+
+  const handleRemoveItem = (itemId) => {
+    dispatch(deleteItemFromCartAsync(itemId));
+  };
 
   return (
     <div className="bg-white">
@@ -60,12 +37,12 @@ export default function Counter() {
             </h2>
 
             <ul role="list" className="divide-y divide-gray-200 border-b border-t border-gray-200">
-              {products.map((product, productIdx) => (
-                <li key={product.id} className="flex py-6 sm:py-10">
+              {items.map((item, itemIdx) => (
+                <li key={`${item.id}-${item.size}`} className="flex py-6 sm:py-10">
                   <div className="flex-shrink-0">
                     <img
-                      src={product.imageSrc}
-                      alt={product.imageAlt}
+                      src={item.imageSrc[0].src}
+                      alt={item.imageSrc[0].imageAlt}
                       className="h-24 w-24 rounded-md object-cover object-center sm:h-48 sm:w-48"
                     />
                   </div>
@@ -75,57 +52,47 @@ export default function Counter() {
                       <div>
                         <div className="flex justify-between">
                           <h3 className="text-sm">
-                            <a href={product.href} className="font-medium text-gray-700 hover:text-gray-800">
-                              {product.name}
-                            </a>
+                            <Link to={`/product/${item.id}`} className="font-medium text-gray-700 hover:text-gray-800">
+                              {item.name}
+                            </Link>
                           </h3>
                         </div>
                         <div className="mt-1 flex text-sm">
-                          <p className="text-gray-500">{product.color}</p>
-                          {product.size ? (
-                            <p className="ml-4 border-l border-gray-200 pl-4 text-gray-500">{product.size}</p>
-                          ) : null}
+                          <p className="text-gray-500">{item.size}</p>
                         </div>
-                        <p className="mt-1 text-sm font-medium text-gray-900">{product.price}</p>
+                        <p className="mt-1 text-sm font-medium text-gray-900">{item.price}</p>
                       </div>
 
                       <div className="mt-4 sm:mt-0 sm:pr-9">
-                        <label htmlFor={`quantity-${productIdx}`} className="sr-only">
-                          Quantity, {product.name}
+                        <label htmlFor={`quantity-${itemIdx}`} className="sr-only">
+                          Quantity, {item.name}
                         </label>
                         <select
-                          id={`quantity-${productIdx}`}
-                          name={`quantity-${productIdx}`}
-                          className="max-w-full rounded-md border border-gray-300 py-1.5 text-left text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
+                          id={`quantity-${itemIdx}`}
+                          name={`quantity-${itemIdx}`}
+                          value={item.quantity}
+                          onChange={(e) => handleQuantityChange(item.id, parseInt(e.target.value))}
+                          className="max-w-full rounded-md border border-gray-300 py-1.5 text-left text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-500 sm:text-sm"
                         >
-                          <option value={1}>1</option>
-                          <option value={2}>2</option>
-                          <option value={3}>3</option>
-                          <option value={4}>4</option>
-                          <option value={5}>5</option>
-                          <option value={6}>6</option>
-                          <option value={7}>7</option>
-                          <option value={8}>8</option>
+                          {[...Array(8)].map((_, i) => (
+                            <option key={i + 1} value={i + 1}>
+                              {i + 1}
+                            </option>
+                          ))}
                         </select>
 
                         <div className="absolute right-0 top-0">
-                          <button type="button" className="-m-2 inline-flex p-2 text-gray-400 hover:text-gray-500">
+                          <button
+                            type="button"
+                            onClick={() => handleRemoveItem(item.id)}
+                            className="-m-2 inline-flex p-2 text-gray-400 hover:text-gray-500"
+                          >
                             <span className="sr-only">Remove</span>
                             <XMarkIcon className="h-5 w-5" aria-hidden="true" />
                           </button>
                         </div>
                       </div>
                     </div>
-
-                    <p className="mt-4 flex space-x-2 text-sm text-gray-700">
-                      {product.inStock ? (
-                        <CheckIcon className="h-5 w-5 flex-shrink-0 text-green-500" aria-hidden="true" />
-                      ) : (
-                        <ClockIcon className="h-5 w-5 flex-shrink-0 text-gray-300" aria-hidden="true" />
-                      )}
-
-                      <span>{product.inStock ? 'In stock' : `Ships in ${product.leadTime}`}</span>
-                    </p>
                   </div>
                 </li>
               ))}
@@ -143,49 +110,31 @@ export default function Counter() {
 
             <dl className="mt-6 space-y-4">
               <div className="flex items-center justify-between">
-                <dt className="text-sm text-gray-600">Subtotal</dt>
-                <dd className="text-sm font-medium text-gray-900">$99.00</dd>
-              </div>
-              <div className="flex items-center justify-between border-t border-gray-200 pt-4">
-                <dt className="flex items-center text-sm text-gray-600">
-                  <span>Shipping estimate</span>
-                  <a href="#" className="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500">
-                    <span className="sr-only">Learn more about how shipping is calculated</span>
-                    <QuestionMarkCircleIcon className="h-5 w-5" aria-hidden="true" />
-                  </a>
-                </dt>
-                <dd className="text-sm font-medium text-gray-900">$5.00</dd>
-              </div>
-              <div className="flex items-center justify-between border-t border-gray-200 pt-4">
-                <dt className="flex text-sm text-gray-600">
-                  <span>Tax estimate</span>
-                  <a href="#" className="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500">
-                    <span className="sr-only">Learn more about how tax is calculated</span>
-                    <QuestionMarkCircleIcon className="h-5 w-5" aria-hidden="true" />
-                  </a>
-                </dt>
-                <dd className="text-sm font-medium text-gray-900">$8.32</dd>
+                <dt className="text-sm text-gray-600">Total items</dt>
+                <dd className="text-sm font-medium text-gray-900">{getTotalItems()}</dd>
               </div>
               <div className="flex items-center justify-between border-t border-gray-200 pt-4">
                 <dt className="text-base font-medium text-gray-900">Order total</dt>
-                <dd className="text-base font-medium text-gray-900">$112.32</dd>
+                <dd className="text-base font-medium text-gray-900">
+                  {`£${getTotalPrice().toFixed(2)}`}
+                </dd>
               </div>
             </dl>
 
             <div className="mt-6">
-              <button 
+              <button
                 type="submit"
-                className="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+                onClick={() => navigate('/checkout')}
+                className="w-full rounded-md border border-transparent bg-gray-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-50"
               >
                 Checkout
               </button>
             </div>
             <div className="mt-6 text-center text-sm">
               <p>
-                or
-                <Link to="/" className="font-medium pl-1 text-indigo-600 hover:text-indigo-500">
-                  Continue Shopping
-                  <span aria-hidden="true"> &rarr;</span>
+                or{' '}
+                <Link to="/" className="font-medium text-gray-600 hover:text-gray-500">
+                  Continue Shopping<span aria-hidden="true"> &rarr;</span>
                 </Link>
               </p>
             </div>

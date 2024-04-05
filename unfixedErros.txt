@@ -1,0 +1,2 @@
+application crash if you do not select a size for a product before adding it in the cart.
+remove forgot password

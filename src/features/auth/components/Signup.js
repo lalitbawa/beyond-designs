@@ -1,28 +1,38 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import {selectCount,} from '../authSlice';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import logo from "../../../images/logo-white.png";
+import { useForm } from "react-hook-form";
+import { selectLoggedInUser, createUserAsync } from "../authSlice";
+import { Navigate } from "react-router-dom";
 
 export default function Signup() {
-  const count = useSelector(selectCount);
   const dispatch = useDispatch();
+  const user = useSelector(selectLoggedInUser);
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
 
   return (
-    <div className="flex min-h-full flex-1">
+    <>
+      {user && <Navigate to="/home" replace={true}></Navigate>}
+      <div className="flex min-h-full flex-1">
         <div className="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full max-w-sm lg:w-96">
             <div>
-              <img
-                className="h-10 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                alt="Your Company"
-              />
+              <img className="h-10 w-auto" src={logo} alt="Your Company" />
               <h2 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900">
                 Become a member now
               </h2>
               <p className="mt-2 text-sm leading-6 text-gray-500">
-                Already a member?{' '}
-                <Link to="/login" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                Already a member?{" "}
+                <Link
+                  to="/login"
+                  className="font-semibold text-gray-600 hover:text-gray-500"
+                >
                   Login
                 </Link>
               </p>
@@ -30,59 +40,125 @@ export default function Signup() {
 
             <div className="mt-10">
               <div>
-                <form action="#" method="POST" className="space-y-6">
+                <form
+                  noValidate
+                  onSubmit={handleSubmit((data) => {
+                    dispatch(
+                      createUserAsync({
+                        name: data.name,
+                        email: data.email,
+                        password: data.password,
+                      })
+                    );
+                  })}
+                  className="space-y-6"
+                >
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+                    <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900">
+                      Name
+                    </label>
+                    <div className="mt-2">
+                      <input
+                        id="name"
+                        {...register('name', {
+                          required: 'Name is required',
+                        })}
+                        type="text"
+                        className={`block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6 ${errors.name ? 'ring-red-500' : ''}`}
+                      />
+                      {errors.name && (
+                        <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
+                      )}
+                    </div>
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
                       Email address
                     </label>
                     <div className="mt-2">
                       <input
                         id="email"
-                        name="email"
+                        {...register("email", {
+                          required: "Email is required",
+                          pattern: {
+                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                            message: "Invalid email address",
+                          },
+                        })}
                         type="email"
-                        autoComplete="email"
-                        required
-                        className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className={`block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6 ${errors.email ? "ring-red-500" : ""}`}
                       />
+                      {errors.email && (
+                        <p className="mt-1 text-sm text-red-600">
+                          {errors.email.message}
+                        </p>
+                      )}
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
+                    <label
+                      htmlFor="password"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
                       Password
                     </label>
                     <div className="mt-2">
                       <input
                         id="password"
-                        name="password"
+                        {...register("password", {
+                          required: "Password is required",
+                          minLength: {
+                            value: 6,
+                            message:
+                              "Password must be at least 6 characters long",
+                          },
+                        })}
                         type="password"
-                        autoComplete="current-password"
-                        required
-                        className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className={`block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6 ${errors.password ? "ring-red-500" : ""}`}
                       />
+                      {errors.password && (
+                        <p className="mt-1 text-sm text-red-600">
+                          {errors.password.message}
+                        </p>
+                      )}
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="confirm-password" className="block text-sm font-medium leading-6 text-gray-900">
+                    <label
+                      htmlFor="confirmPassword"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
                       Confirm Password
                     </label>
                     <div className="mt-2">
                       <input
-                        id="confirm-password"
-                        name="confirm-password"
+                        id="confirmPassword"
+                        {...register("confirmPassword", {
+                          required: "Confirm Password is required",
+                          validate: (value) =>
+                            value === watch("password") ||
+                            "Passwords do not match",
+                        })}
                         type="password"
-                        autoComplete="current-password"
-                        required
-                        className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className={`block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6 ${errors.confirmPassword ? "ring-red-500" : ""}`}
                       />
+                      {errors.confirmPassword && (
+                        <p className="mt-1 text-sm text-red-600">
+                          {errors.confirmPassword.message}
+                        </p>
+                      )}
                     </div>
                   </div>
 
                   <div>
                     <button
                       type="submit"
-                      className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                      className="flex w-full justify-center rounded-md bg-gray-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
                     >
                       Sign up
                     </button>
@@ -92,7 +168,10 @@ export default function Signup() {
 
               <div className="mt-10">
                 <div className="relative">
-                  <div className="absolute inset-0 flex items-center" aria-hidden="true">
+                  <div
+                    className="absolute inset-0 flex items-center"
+                    aria-hidden="true"
+                  >
                     <div className="w-full border-t border-gray-200" />
                   </div>
                 </div>
@@ -103,10 +182,11 @@ export default function Signup() {
         <div className="relative hidden w-0 flex-1 lg:block">
           <img
             className="absolute inset-0 h-full w-full object-cover"
-            src="https://images.unsplash.com/photo-1496917756835-20cb06e75b4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1908&q=80"
+            src={logo}
             alt=""
           />
         </div>
       </div>
+    </>
   );
 }

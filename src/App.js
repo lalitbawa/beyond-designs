@@ -10,11 +10,20 @@ import {
 import CartPage from './pages/CartPage';
 import Checkout from './pages/Checkout'
 import ProductDetailPage from './pages/ProductDetailPage';
+import Protected from './features/auth/Protected';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectLoggedInUser } from './features/auth/authSlice';
+import { fetchItemsByUserIdAsync } from './features/cart/cartSlice';
+import Error404 from './pages/Error404';
+import OrderSuccessPage from './pages/OrderSuccessPage';
+import UserOrderPage from './pages/UserOrderPage';
+import Logout from './features/auth/components/Logout';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home></Home>,
+    element: <Protected><Home></Home></Protected>,
   },
   {
     path: "login",
@@ -26,23 +35,49 @@ const router = createBrowserRouter([
   },
   {
     path: "cart",
-    element: <CartPage></CartPage>,
+    element: <Protected><CartPage></CartPage></Protected>,
   },
   {
     path: "home",
-    element: <LandingPage></LandingPage>,
+    element: <Protected><LandingPage></LandingPage></Protected>,
   },
   {
     path: "checkout",
-    element: <Checkout></Checkout>,
+    element: <Protected><Checkout></Checkout></Protected>,
   },
   {
     path: "productdetails/:productId",
-    element: <ProductDetailPage></ProductDetailPage>,
+    element: <Protected><ProductDetailPage></ProductDetailPage></Protected>,
   },
+  {
+    path: "*",
+    element: <Error404></Error404>
+  },
+  {
+    path: '/logout',
+    element: <Logout></Logout>,
+  },
+  {
+    path: "ordersuccess",
+    element: <Protected><OrderSuccessPage></OrderSuccessPage></Protected>,
+  },
+  {
+    path: "userorders",
+    element: <Protected><UserOrderPage></UserOrderPage></Protected>,
+  }
 ]);
 
 function App() {
+  const dispatch = useDispatch();
+  const user = useSelector(selectLoggedInUser);
+
+  useEffect(()=>{
+    if(user){
+      dispatch(fetchItemsByUserIdAsync(user.id))
+    }
+  },[dispatch, user])
+
+  
   return (
     <div className="App">
       <RouterProvider router={router}/>

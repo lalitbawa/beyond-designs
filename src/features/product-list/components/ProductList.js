@@ -217,7 +217,7 @@ export default function ProductList() {
                               : parseInt(option.value, 10) + 25
                           }`}
                           type="checkbox"
-                          className="h-4 w-4 flex-shrink-0 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                          className="h-4 w-4 flex-shrink-0 rounded border-gray-300 text-gray-600 focus:ring-gray-500"
                           checked={selectedFilters.price.includes(
                             `${option.value}-${
                               option.value === "75"
@@ -259,7 +259,7 @@ export default function ProductList() {
                           name="Season[]"
                           value={option.value}
                           type="checkbox"
-                          className="h-4 w-4 flex-shrink-0 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                          className="h-4 w-4 flex-shrink-0 rounded border-gray-300 text-gray-600 focus:ring-gray-500"
                           checked={selectedFilters.season.includes(
                             option.value
                           )}
@@ -292,7 +292,7 @@ export default function ProductList() {
                           name="size[]"
                           value={option.value}
                           type="checkbox"
-                          className="h-4 w-4 flex-shrink-0 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                          className="h-4 w-4 flex-shrink-0 rounded border-gray-300 text-gray-600 focus:ring-gray-500"
                           checked={selectedFilters.size.includes(option.value)}
                           onChange={() =>
                             handleFilterChange("size", option.value)
@@ -321,7 +321,7 @@ export default function ProductList() {
                           name="category[]"
                           value={option.value}
                           type="checkbox"
-                          className="h-4 w-4 flex-shrink-0 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                          className="h-4 w-4 flex-shrink-0 rounded border-gray-300 text-gray-600 focus:ring-gray-500"
                           checked={selectedFilters.category.includes(
                             option.value
                           )}
@@ -483,7 +483,7 @@ export default function ProductList() {
                     }
                     className={classNames(
                       currentPage === index + 1
-                        ? "relative z-10 inline-flex items-center bg-indigo-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        ? "relative z-10 inline-flex items-center bg-gray-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
                         : "relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0",
                       "rounded-md"
                     )}

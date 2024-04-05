@@ -1,33 +1,51 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-
-const products = [
-    {
-      id: 1,
-      name: 'High Wall Tote',
-      href: '#',
-      price: '$210.00',
-      color: 'White and black',
-      size: '15L',
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/checkout-page-07-product-01.jpg',
-      imageAlt: 'Front of zip tote bag with white canvas, white handles, and black drawstring top.',
-    },
-    // More products...
-  ]
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { selectItems, createOrderAsync} from '../features/cart/cartSlice';
+import { selectLoggedInUser } from '../features/auth/authSlice';
+import Footer from '../features/Footer/Footer'
 
 export default function Checkout() {
+  const items = useSelector(selectItems);
+  const user = useSelector(selectLoggedInUser);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { register, handleSubmit, formState: { errors } } = useForm();
+
+  const getTotalPrice = () => {
+    return items.reduce((total, item) => total + parseFloat(item.price.replace('£', '')) * item.quantity, 0);
+  };
+
+  const onSubmit = async (data) => {
+    const orderData = {
+      user: user.id,
+      items: items,
+      ...data,
+    };
+  
+    try {
+      await dispatch(createOrderAsync(orderData)).unwrap();
+      // Remove the dispatch(clearCart()) line
+      navigate('/ordersuccess');
+    } catch (error) {
+      console.error('Error creating order:', error);
+    }
+  };
+
   return (
+    <>
     <div className="bg-white">
       {/* Background color split screen for large screens */}
       <div className="fixed left-0 top-0 hidden h-full w-1/2 bg-white lg:block" aria-hidden="true" />
-      <div className="fixed right-0 top-0 hidden h-full w-1/2 bg-indigo-900 lg:block" aria-hidden="true" />
+      <div className="fixed right-0 top-0 hidden h-full w-1/2 bg-gray-600 lg:block" aria-hidden="true" />
 
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-x-16 lg:grid-cols-2 lg:px-8 lg:pt-16">
         <h1 className="sr-only">Checkout</h1>
 
         <section
           aria-labelledby="summary-heading"
-          className="bg-indigo-900 py-12 text-indigo-300 md:px-10 lg:col-start-2 lg:row-start-1 lg:mx-auto lg:w-full lg:max-w-lg lg:bg-transparent lg:px-0 lg:pb-24 lg:pt-0"
+          className="bg-gray-600 py-12 text-gray-300 md:px-10 lg:col-start-2 lg:row-start-1 lg:mx-auto lg:w-full lg:max-w-lg lg:bg-transparent lg:px-0 lg:pb-24 lg:pt-0"
         >
           <div className="mx-auto max-w-2xl px-4 lg:max-w-none lg:px-0">
             <h2 id="summary-heading" className="sr-only">
@@ -36,46 +54,31 @@ export default function Checkout() {
 
             <dl>
               <dt className="text-sm font-medium">Amount due</dt>
-              <dd className="mt-1 text-3xl font-bold tracking-tight text-white">$232.00</dd>
+              <dd className="mt-1 text-3xl font-bold tracking-tight text-white">{`£${getTotalPrice().toFixed(2)}`}</dd>
             </dl>
 
             <ul role="list" className="divide-y divide-white divide-opacity-10 text-sm font-medium">
-              {products.map((product) => (
-                <li key={product.id} className="flex items-start space-x-4 py-6">
+              {items.map((item) => (
+                <li key={item.id} className="flex items-start space-x-4 py-6">
                   <img
-                    src={product.imageSrc}
-                    alt={product.imageAlt}
+                    src={item.imageSrc[0].src}
+                    alt={item.imageSrc[0].imageAlt}
                     className="h-20 w-20 flex-none rounded-md object-cover object-center"
                   />
                   <div className="flex-auto space-y-1">
-                    <h3 className="text-white">{product.name}</h3>
-                    <p>{product.color}</p>
-                    <p>{product.size}</p>
+                    <h3 className="text-white">{item.name}</h3>
+                    <p>{item.size}</p>
+                    <p>Quantity: {item.quantity}</p>
                   </div>
-                  <p className="flex-none text-base font-medium text-white">{product.price}</p>
+                  <p className="flex-none text-base font-medium text-white">{item.price}</p>
                 </li>
               ))}
             </ul>
 
             <dl className="space-y-6 border-t border-white border-opacity-10 pt-6 text-sm font-medium">
-              <div className="flex items-center justify-between">
-                <dt>Subtotal</dt>
-                <dd>$570.00</dd>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <dt>Shipping</dt>
-                <dd>$25.00</dd>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <dt>Taxes</dt>
-                <dd>$47.60</dd>
-              </div>
-
               <div className="flex items-center justify-between border-t border-white border-opacity-10 pt-6 text-white">
                 <dt className="text-base">Total</dt>
-                <dd className="text-base">$642.60</dd>
+                <dd className="text-base">{`£${getTotalPrice().toFixed(2)}`}</dd>
               </div>
             </dl>
           </div>
@@ -89,7 +92,7 @@ export default function Checkout() {
             Payment and shipping details
           </h2>
 
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mx-auto max-w-2xl px-4 lg:max-w-none lg:px-0">
               <div>
                 <h3 id="contact-info-heading" className="text-lg font-medium text-gray-900">
@@ -97,17 +100,27 @@ export default function Checkout() {
                 </h3>
 
                 <div className="mt-6">
-                  <label htmlFor="email-address" className="block text-sm font-medium text-gray-700">
-                    Email address
+                  <label htmlFor="phone-number" className="block text-sm font-medium text-gray-700">
+                    Phone number
                   </label>
                   <div className="mt-1">
                     <input
-                      type="email"
-                      id="email-address"
-                      name="email-address"
-                      autoComplete="email"
-                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      type="tel"
+                      id="phone-number"
+                      {...register('phoneNumber', {
+                        required: 'Phone number is required',
+                        pattern: {
+                          value: /^[0-9]{10}$/,
+                          message: 'Invalid phone number',
+                        },
+                      })}
+                      className={`block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm ${
+                        errors.phoneNumber ? 'border-red-500' : ''
+                      }`}
                     />
+                    {errors.phoneNumber && (
+                      <p className="mt-1 text-sm text-red-600">{errors.phoneNumber.message}</p>
+                    )}
                   </div>
                 </div>
               </div>
@@ -124,10 +137,20 @@ export default function Checkout() {
                       <input
                         type="text"
                         id="card-number"
-                        name="card-number"
-                        autoComplete="cc-number"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        {...register('cardNumber', {
+                          required: 'Card number is required',
+                          pattern: {
+                            value: /^[0-9]{16}$/,
+                            message: 'Invalid card number',
+                          },
+                        })}
+                        className={`block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm ${
+                          errors.cardNumber ? 'border-red-500' : ''
+                        }`}
                       />
+                      {errors.cardNumber && (
+                        <p className="mt-1 text-sm text-red-600">{errors.cardNumber.message}</p>
+                      )}
                     </div>
                   </div>
 
@@ -138,11 +161,21 @@ export default function Checkout() {
                     <div className="mt-1">
                       <input
                         type="text"
-                        name="expiration-date"
                         id="expiration-date"
-                        autoComplete="cc-exp"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        {...register('expirationDate', {
+                          required: 'Expiration date is required',
+                          pattern: {
+                            value: /^(0[1-9]|1[0-2])\/[0-9]{2}$/,
+                            message: 'Invalid expiration date',
+                          },
+                        })}
+                        className={`block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm ${
+                          errors.expirationDate ? 'border-red-500' : ''
+                        }`}
                       />
+                      {errors.expirationDate && (
+                        <p className="mt-1 text-sm text-red-600">{errors.expirationDate.message}</p>
+                      )}
                     </div>
                   </div>
 
@@ -153,11 +186,21 @@ export default function Checkout() {
                     <div className="mt-1">
                       <input
                         type="text"
-                        name="cvc"
                         id="cvc"
-                        autoComplete="csc"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        {...register('cvc', {
+                          required: 'CVC is required',
+                          pattern: {
+                            value: /^[0-9]{3,4}$/,
+                            message: 'Invalid CVC',
+                          },
+                        })}
+                        className={`block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm ${
+                          errors.cvc ? 'border-red-500' : ''
+                        }`}
                       />
+                      {errors.cvc && (
+                        <p className="mt-1 text-sm text-red-600">{errors.cvc.message}</p>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -175,10 +218,16 @@ export default function Checkout() {
                       <input
                         type="text"
                         id="address"
-                        name="address"
-                        autoComplete="street-address"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        {...register('address', {
+                          required: 'Address is required',
+                        })}
+                        className={`block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm ${
+                          errors.address ? 'border-red-500' : ''
+                        }`}
                       />
+                      {errors.address && (
+                        <p className="mt-1 text-sm text-red-600">{errors.address.message}</p>
+                      )}
                     </div>
                   </div>
 
@@ -190,10 +239,16 @@ export default function Checkout() {
                       <input
                         type="text"
                         id="city"
-                        name="city"
-                        autoComplete="address-level2"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        {...register('city', {
+                          required: 'City is required',
+                        })}
+                        className={`block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm ${
+                          errors.city ? 'border-red-500' : ''
+                        }`}
                       />
+                      {errors.city && (
+                        <p className="mt-1 text-sm text-red-600">{errors.city.message}</p>
+                      )}
                     </div>
                   </div>
 
@@ -205,10 +260,16 @@ export default function Checkout() {
                       <input
                         type="text"
                         id="region"
-                        name="region"
-                        autoComplete="address-level1"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        {...register('region', {
+                          required: 'State/Province is required',
+                        })}
+                        className={`block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm ${
+                          errors.region ? 'border-red-500' : ''
+                        }`}
                       />
+                      {errors.region && (
+                        <p className="mt-1 text-sm text-red-600">{errors.region.message}</p>
+                      )}
                     </div>
                   </div>
 
@@ -220,35 +281,44 @@ export default function Checkout() {
                       <input
                         type="text"
                         id="postal-code"
-                        name="postal-code"
-                        autoComplete="postal-code"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        {...register('postalCode', {
+                          required: 'Postal code is required',
+                        })}
+                        className={`block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm ${
+                          errors.postalCode ? 'border-red-500' : ''
+                        }`}
                       />
+                      {errors.postalCode && (
+                        <p className="mt-1 text-sm text-red-600">{errors.postalCode.message}</p>
+                      )}
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="mt-10 flex justify-centre border-t border-gray-200 pt-6">
+
+              <div className="mt-10 flex justify-end border-t border-gray-200 pt-6">
                 <button
                   type="submit"
-                  className="rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+                  className="rounded-md border border-transparent bg-gray-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-50"
                 >
                   Pay now
                 </button>
               </div>
             </div>
           </form>
+
           <div className="mt-6 text-center text-sm">
-              <p>
-                or
-                <Link to="/" className="font-medium pl-1 text-indigo-600 hover:text-indigo-500">
-                  Go back to cart
-                  <span aria-hidden="true"> &rarr;</span>
-                </Link>
-              </p>
-            </div>
+            <p>
+              or{' '}
+              <Link to="/cart" className="font-medium text-gray-600 hover:text-gray-500">
+                Go back to cart<span aria-hidden="true"> &rarr;</span>
+              </Link>
+            </p>
+          </div>
         </section>
       </div>
     </div>
-  )
+    <Footer></Footer>
+    </>
+  );
 }
