@@ -899,7 +899,50 @@
       "id": 2
     }
   ],
-  "cart": [],
+  "cart": [
+    {
+      "name": "PACK OF 2 STRIPED POPLIN BOXERS",
+      "imageSrc": [
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/0775/304/555/2/w/448/0775304555_6_1_1.jpg?ts=1685087981331",
+          "imageAlt": "Image 0 of PACK OF 2 STRIPED POPLIN BOXERS from Zara"
+        },
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/0775/304/555/2/w/448/0775304555_6_2_1.jpg?ts=1685087980466",
+          "imageAlt": "Image 1 of PACK OF 2 STRIPED POPLIN BOXERS from Zara"
+        }
+      ],
+      "price": "£ 22.05",
+      "product_type": "accessories",
+      "size": "xs",
+      "details": "Pack of 2 pairs of boxers made of cotton poplin fabric. Elasticated waistband.",
+      "season": "summer",
+      "quantity": 1,
+      "user": 1,
+      "id": 1
+    },
+    {
+      "name": "2-PACK OF SHORT POPLIN BOXERS",
+      "imageSrc": [
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/1063/308/555/2/w/448/1063308555_6_1_1.jpg?ts=1692953919685",
+          "imageAlt": "Image 0 of 2-PACK OF SHORT POPLIN BOXERS from Zara"
+        },
+        {
+          "src": "https://static.zara.net/photos///2023/I/0/2/p/1063/308/555/2/w/448/1063308555_6_2_1.jpg?ts=1692953919428",
+          "imageAlt": "Image 1 of 2-PACK OF SHORT POPLIN BOXERS from Zara"
+        }
+      ],
+      "price": "£ 22.05",
+      "product_type": "accessories",
+      "size": "s",
+      "details": "Pack of 2 pairs of short boxers made of cotton poplin fabric. Elasticated waistband.",
+      "season": "summer",
+      "quantity": 1,
+      "user": 1,
+      "id": 2
+    }
+  ],
   "orders": [
     {
       "user": 1,

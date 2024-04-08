@@ -1,2 +1,2 @@
-application crash if you do not select a size for a product before adding it in the cart.
-remove forgot password
+navbar child my orders in mobile navbar not working.
+wrong item in ordersuccess page and then add the ss to figma

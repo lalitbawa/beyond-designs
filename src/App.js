@@ -73,7 +73,7 @@ function App() {
 
   useEffect(()=>{
     if(user){
-      dispatch(fetchItemsByUserIdAsync(user.id))
+      dispatch(fetchItemsByUserIdAsync(user._id))
     }
   },[dispatch, user])
 

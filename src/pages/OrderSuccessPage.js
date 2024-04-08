@@ -1,28 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { selectLoggedInUser } from '../features/auth/authSlice';
 import { Link } from 'react-router-dom';
 import Footer from '../features/Footer/Footer';
+import { fetchLatestOrderAsync, selectLatestOrder } from '../features/cart/cartSlice';
+import { useDispatch } from 'react-redux';
+import { nanoid } from 'nanoid';
 
 export default function OrderSuccessPage() {
   const user = useSelector(selectLoggedInUser);
-  const [order, setOrder] = useState(null);
+  const order = useSelector(selectLatestOrder);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchLatestOrder = async () => {
-      try {
-        const response = await fetch(`http://localhost:8080/orders?user=${user.id}&_sort=id&_order=desc&_limit=1`);
-        const data = await response.json();
-        setOrder(data[0]);
-      } catch (error) {
-        console.error('Error fetching latest order:', error);
-      }
-    };
-
     if (user) {
-      fetchLatestOrder();
+      dispatch(fetchLatestOrderAsync(user._id));
     }
-  }, [user]);
+  }, [user, dispatch]);
 
   if (!order) {
     return <div>Loading...</div>;
@@ -52,7 +46,7 @@ export default function OrderSuccessPage() {
           <h2 className="sr-only">Recent order</h2>
 
           <div className="space-y-20">
-            <div key={order.id}>
+            <div key={order._id}>
               <h3 className="sr-only">Order placed on <time dateTime={order.createdAt}>{new Date(order.createdAt).toLocaleDateString()}</time></h3>
 
               <div className="mt-6 flex flex-col border-t border-b border-gray-200 py-6 text-sm sm:flex-row sm:justify-between">
@@ -88,7 +82,7 @@ export default function OrderSuccessPage() {
                 </thead>
                 <tbody className="divide-y divide-gray-200 border-b border-gray-200 text-sm sm:border-t">
                   {order.items.map((item) => (
-                    <tr key={item.id}>
+                    <tr key={nanoid()}>
                       <td className="py-6 pr-8">
                         <div className="flex items-center">
                           <img

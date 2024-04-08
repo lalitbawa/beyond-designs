@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice, createAction } from '@reduxjs/toolkit';
-import { addToCart, fetchItemsByUserId, updateCart, deleteItemFromCart, createOrder } from './cartAPI';
-
+import { addToCart, fetchItemsByUserId, updateCart, deleteItemFromCart, createOrder,fetchLatestOrder } from './cartAPI';
 
 const initialState = {
   items : [],
+  latestOrder: null,
   status: 'idle',
 };
 
@@ -31,8 +31,8 @@ export const fetchItemsByUserIdAsync = createAsyncThunk(
 
 export const updateCartAsync = createAsyncThunk(
   'cart/updateCart',
-  async (update) => {
-    const response = await updateCart(update);
+  async ({ itemId, quantity }) => {
+    const response = await updateCart(itemId, quantity);
     return response.data;
   }
 );
@@ -60,9 +60,17 @@ export const createOrderAsync = createAsyncThunk(
 
     // Dispatch deleteItemFromCartAsync for each item in the cart
     cartItems.forEach((item) => {
-      dispatch(deleteItemFromCartAsync(item.id));
+      dispatch(deleteItemFromCartAsync(item._id));
     });
 
+    return response.data;
+  }
+);
+
+export const fetchLatestOrderAsync = createAsyncThunk(
+  'cart/fetchLatestOrder',
+  async (userId) => {
+    const response = await fetchLatestOrder(userId);
     return response.data;
   }
 );
@@ -96,19 +104,27 @@ export const counterSlice = createSlice({
     })
     .addCase(updateCartAsync.fulfilled, (state, action) => {
       state.status = 'idle';
-      const { id, quantity } = action.payload;
-      const item = state.items.find((item) => item.id === id);
+      const { _id, quantity } = action.payload;
+      const item = state.items.find((item) => item._id === _id);
       if (item) {
         item.quantity = quantity;
       }
     })
     .addCase(deleteItemFromCartAsync.fulfilled, (state, action) => {
       state.status = 'idle';
-      state.items = state.items.filter((item) => item.id !== action.payload.id);
-    });
+      state.items = state.items.filter((item) => item._id !== action.payload.id);
+    })
+    .addCase(fetchLatestOrderAsync.pending, (state) => {
+      state.status = 'loading';
+    })
+    .addCase(fetchLatestOrderAsync.fulfilled, (state, action) => {
+      state.status = 'idle';
+      state.latestOrder = action.payload[action.payload.length - 1];
+    })
   },
 });
 
 export const { increment } = counterSlice.actions;
 export const selectItems = (state) => state.cart.items;
+export const selectLatestOrder = (state) => state.cart.latestOrder;
 export default counterSlice.reducer;

@@ -9,7 +9,7 @@ export default function Login() {
   const dispatch = useDispatch();
   const user = useSelector(selectLoggedInUser);
   const { register, handleSubmit, watch, formState: { errors }, } = useForm();
-  const error = useSelector(selectLoggedInError);
+  const [error, setError] = useState(null);
 
   return (
     <>
@@ -37,8 +37,12 @@ export default function Login() {
             <div className="mt-10">
               <div>
                 <form noValidate
-                  onSubmit={handleSubmit((data) => {
-                    dispatch(checkUserAsync({ email: data.email, password: data.password }))
+                  onSubmit={handleSubmit(async (data) => {
+                    try {
+                      await dispatch(checkUserAsync({ email: data.email, password: data.password })).unwrap();
+                    } catch (error) {
+                      setError(error.toString());
+                    }
                   })} className="space-y-6">
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">

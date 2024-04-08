@@ -1,33 +1,50 @@
-// A mock function to mimic making an async request for data
 export function createUser(userData) {
-  return new Promise(async(resolve) =>{ 
-    const response = await fetch("http://localhost:8080/users",{
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(userData)
-    })
-    const data = await response.json()
-    resolve({data})
-});
+  return new Promise(async (resolve, reject) => {
+    try {
+      const response = await fetch("http://localhost:8080/users", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userData)
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        resolve({ data });
+      } else {
+        const error = await response.json();
+        reject(error.error);
+      }
+    } catch (error) {
+      reject(error.message);
+    }
+  });
 }
 
 
 export function checkUser(loginData) {
   return new Promise(async (resolve, reject) => {
-    const email = loginData.email;
-    const password = loginData.password;
-    const response = await fetch("http://localhost:8080/users?email=" + email);
-    const data = await response.json();
-    if (data.length) {
-      if (data[0].password === password) {
-        resolve({ data: data[0] });
+    try {
+      const email = loginData.email;
+      const password = loginData.password;
+      const response = await fetch(`http://localhost:8080/users/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        resolve({ data });
       } else {
-        reject(new Error("Password is incorrect"));
+        const error = await response.json();
+        reject(new Error(error.message));
       }
-    } else {
-      reject(new Error("User not found"));
+    } catch (error) {
+      reject(error);
     }
   });
 }
@@ -38,3 +55,4 @@ export function signOut(userId) {
     resolve({ data: 'success' });
   });
 }
+

@@ -7,7 +7,6 @@ import { selectAllProducts, selectProductsStatus, fetchAllProductsAsync } from '
 import { selectLoggedInUser } from '../../auth/authSlice';
 import { addToCartAsync } from '../../cart/cartSlice';
 import { useNavigate } from 'react-router-dom';
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
@@ -18,9 +17,10 @@ export default function ProductDetails() {
   const products = useSelector(selectAllProducts);
   const productsStatus = useSelector(selectProductsStatus);
   const [selectedSize, setSelectedSize] = useState(null);
-  const user = useSelector(selectLoggedInUser);
+  const user= useSelector(selectLoggedInUser);
+
   const navigate = useNavigate();
-  const product = products.find((p) => p.id === parseInt(productId));
+  const product = products.find((p) => p._id === (productId));
 
   const dispatch = useDispatch();
 
@@ -47,13 +47,15 @@ export default function ProductDetails() {
       alert('Please select a size');
       return; // Exit the function if no size is selected
     }
-    const newItem = { ...product, quantity: 1, user: user.id, size: selectedSize };
-    delete newItem['id'];
+    const newItem = { ...product, quantity: 1, user: user._id, size: selectedSize };
+    delete newItem['_id'];
     dispatch(addToCartAsync(newItem));
     navigate('/cart');
   };
 
-  console.log(selectedSize)
+  const newItem = { ...product, quantity: 1, user: user._id, size: selectedSize };
+  delete newItem['_id'];
+
 
   return (
     <div className="bg-white">

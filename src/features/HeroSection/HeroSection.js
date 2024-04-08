@@ -46,7 +46,7 @@ export default function HeroSection() {
                     <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                       {randomProducts.slice(0, 2).map((product, index) => (
                         <div
-                          key={product.id}
+                          key={product._id}
                           className={`h-64 w-44 overflow-hidden rounded-lg ${
                             index === 0 ? 'sm:opacity-0 lg:opacity-100' : ''
                           }`}
@@ -62,7 +62,7 @@ export default function HeroSection() {
                     <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                       {randomProducts.slice(2, 5).map((product) => (
                         <div
-                          key={product.id}
+                          key={product._id}
                           className="h-64 w-44 overflow-hidden rounded-lg"
                         >
                           <img
@@ -76,7 +76,7 @@ export default function HeroSection() {
                     <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                       {randomProducts.slice(5, 7).map((product) => (
                         <div
-                          key={product.id}
+                          key={product._id}
                           className="h-64 w-44 overflow-hidden rounded-lg"
                         >
                           <img

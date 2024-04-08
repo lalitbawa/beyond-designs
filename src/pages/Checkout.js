@@ -19,11 +19,11 @@ export default function Checkout() {
 
   const onSubmit = async (data) => {
     const orderData = {
-      user: user.id,
+      user: user._id,
       items: items,
       ...data,
     };
-  
+    
     try {
       await dispatch(createOrderAsync(orderData)).unwrap();
       // Remove the dispatch(clearCart()) line
@@ -59,7 +59,7 @@ export default function Checkout() {
 
             <ul role="list" className="divide-y divide-white divide-opacity-10 text-sm font-medium">
               {items.map((item) => (
-                <li key={item.id} className="flex items-start space-x-4 py-6">
+                <li key={item._id} className="flex items-start space-x-4 py-6">
                   <img
                     src={item.imageSrc[0].src}
                     alt={item.imageSrc[0].imageAlt}

@@ -125,16 +125,16 @@ export default function Navbar({ Children }) {
 
 
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-                  {navigation.pages.map((page) => (
-                    <div key={page.name} className="flow-root">
-                      <Link
-                        to={page.href}
-                        className="-m-2 block p-2 font-medium text-gray-900"
-                      >
-                        {page.name}
-                      </Link>
-                    </div>
-                  ))}
+                {navigation.pages.map((page) => (
+  <div key={page.name} className="flow-root">
+    <Link
+      to={page.href}
+      className="-m-2 block p-2 font-medium text-gray-900"
+    >
+      {page.name}
+    </Link>
+  </div>
+))}
                 </div>
 
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
@@ -149,8 +149,8 @@ export default function Navbar({ Children }) {
                   
                   <div className="flow-root">
                     <Link
-                      to="#"
-                      className="-m-2 block p-2 font-medium text-gray-900"
+      to="/userorders"
+      className="-m-2 block p-2 font-medium text-gray-900"
                     >
                       My orders
                     </Link>
@@ -185,26 +185,25 @@ export default function Navbar({ Children }) {
               <div className="ml-4 flex lg:ml-0">
                 <Link to="/">
                   <span className="sr-only">Eve Logo</span>
-                  <img src={logo} className="h-14 w-auto" alt="pookie-image" />
+                  <img src={logo} className="h-10 w-auto mr-4" alt="pookie-image" />
                 </Link>
               </div>
 
               {/* Flyout menus */}
               <Popover.Group className="hidden lg:ml-8 lg:block lg:self-stretch">
                 <div className="flex h-full space-x-8">
-                  {navigation.products.map((product) => (
-                    <Link
-                      key={product.id}
-                      to={product.href}
-                      className={classNames(
-                        "border-transparent text-gray-700 hover:text-gray-800",
-                        "relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out"
-                      )}
-                    >
-                      {product.name}
-                    </Link>
-                  ))}
-
+                {navigation.products.map((product) => (
+  <Link
+    key={product.id}
+    to={product.href}
+    className={classNames(
+      "border-transparent text-gray-700 hover:text-gray-800",
+      "relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out"
+    )}
+  >
+    {product.name}
+  </Link>
+))}
                   {/* Pages */}
                   {navigation.pages.map((page) => (
                     <a
@@ -253,15 +252,15 @@ export default function Navbar({ Children }) {
                       {searchResults.length > 0 && (
                         <div className="absolute w-full mt-2 bg-white border rounded-md shadow-lg z-10">
                           <ul className="max-h-48 overflow-auto">
-                            {searchResults.map((product) => (
-                              <li
-                                key={product.id}
-                                className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                                onClick={() => handleProductClick(product.id)}
-                              >
-                                {product.name}
-                              </li>
-                            ))}
+                          {searchResults.map((product) => (
+  <li
+    key={product._id}
+    className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+    onClick={() => handleProductClick(product._id)}
+  >
+    {product.name}
+  </li>
+))}
                           </ul>
                         </div>
                       )}

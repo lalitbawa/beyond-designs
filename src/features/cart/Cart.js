@@ -19,11 +19,13 @@ export default function Cart() {
   };
 
   const handleQuantityChange = (itemId, quantity) => {
-    dispatch(updateCartAsync({ id: itemId, quantity }));
+    dispatch(updateCartAsync({ itemId, quantity }));
+    console.log(itemId, quantity)
   };
 
   const handleRemoveItem = (itemId) => {
     dispatch(deleteItemFromCartAsync(itemId));
+    console.log(itemId)
   };
 
   return (
@@ -38,7 +40,7 @@ export default function Cart() {
 
             <ul role="list" className="divide-y divide-gray-200 border-b border-t border-gray-200">
               {items.map((item, itemIdx) => (
-                <li key={`${item.id}-${item.size}`} className="flex py-6 sm:py-10">
+                <li key={`${item._id}-${item.size}`} className="flex py-6 sm:py-10">
                   <div className="flex-shrink-0">
                     <img
                       src={item.imageSrc[0].src}
@@ -52,7 +54,7 @@ export default function Cart() {
                       <div>
                         <div className="flex justify-between">
                           <h3 className="text-sm">
-                            <Link to={`/product/${item.id}`} className="font-medium text-gray-700 hover:text-gray-800">
+                            <Link to={`/product/${item._id}`} className="font-medium text-gray-700 hover:text-gray-800">
                               {item.name}
                             </Link>
                           </h3>
@@ -71,7 +73,7 @@ export default function Cart() {
                           id={`quantity-${itemIdx}`}
                           name={`quantity-${itemIdx}`}
                           value={item.quantity}
-                          onChange={(e) => handleQuantityChange(item.id, parseInt(e.target.value))}
+                          onChange={(e) => handleQuantityChange(item._id, parseInt(e.target.value))}
                           className="max-w-full rounded-md border border-gray-300 py-1.5 text-left text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-500 sm:text-sm"
                         >
                           {[...Array(8)].map((_, i) => (
@@ -84,7 +86,8 @@ export default function Cart() {
                         <div className="absolute right-0 top-0">
                           <button
                             type="button"
-                            onClick={() => handleRemoveItem(item.id)}
+                            onClick={() => handleRemoveItem(item._id)
+                            }
                             className="-m-2 inline-flex p-2 text-gray-400 hover:text-gray-500"
                           >
                             <span className="sr-only">Remove</span>

@@ -10,7 +10,7 @@ export default function UserOrder() {
   
     useEffect(() => {
       if (user) {
-        dispatch(fetchUserOrdersAsync(user.id));
+        dispatch(fetchUserOrdersAsync(user._id));
       }
     }, [dispatch, user]);
   
@@ -21,12 +21,12 @@ export default function UserOrder() {
   
           <div className="mt-12 space-y-16">
             {orders.map((order) => (
-              <div key={order.id} className="border-t border-b border-gray-200 bg-white shadow-sm sm:rounded-lg sm:border">
+              <div key={order._id} className="border-t border-b border-gray-200 bg-white shadow-sm sm:rounded-lg sm:border">
                 <div className="flex items-center border-b border-gray-200 p-4 sm:p-6">
                   <div className="flex flex-1 items-center">
                     <div className="ml-4 flex-1 sm:ml-6">
                       <div className="flex items-center justify-between">
-                        <h3 className="text-lg font-medium text-gray-900">Order #{order.id}</h3>
+                        <h3 className="text-lg font-medium text-gray-900">Order #{order._id}</h3>
                         <p className="ml-4 text-sm text-gray-600">{order.status}</p>
                       </div>
                       <div className="mt-3 flex flex-col sm:flex-row sm:items-center sm:justify-between sm:mt-0">
@@ -39,7 +39,7 @@ export default function UserOrder() {
                   <div className="flow-root">
                     <ul className="-my-6 divide-y divide-gray-200">
                       {order.items.map((item) => (
-                        <li key={item.id} className="flex py-6">
+                        <li key={`${order._id}-${item._id}-${Math.random()}`} className="flex py-6">
                           <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                             <img
                               src={item.imageSrc[0].src}

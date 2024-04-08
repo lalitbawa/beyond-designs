@@ -15,7 +15,7 @@ export default function Signup() {
     watch,
     formState: { errors },
   } = useForm();
-
+  const [error, setError] = useState(null);
   return (
     <>
       {user && <Navigate to="/home" replace={true}></Navigate>}
@@ -42,14 +42,12 @@ export default function Signup() {
               <div>
                 <form
                   noValidate
-                  onSubmit={handleSubmit((data) => {
-                    dispatch(
-                      createUserAsync({
-                        name: data.name,
-                        email: data.email,
-                        password: data.password,
-                      })
-                    );
+                  onSubmit={handleSubmit(async (data) => {
+                    try {
+                      await dispatch(createUserAsync({ name: data.name, email: data.email, password: data.password })).unwrap();
+                    } catch (error) {
+                      setError(error.toString());
+                    }
                   })}
                   className="space-y-6"
                 >
