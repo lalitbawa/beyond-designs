@@ -1,3 +1,4 @@
+//necessary imports
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -5,6 +6,8 @@ import logo from "../../../images/logo-white.png";
 import { useForm } from "react-hook-form";
 import { selectLoggedInUser, createUserAsync } from "../authSlice";
 import { Navigate } from "react-router-dom";
+
+//signup page - includes signup interface, makes use of react-hook-form for form validation, dispatches createUserAsync action to create a new user.
 
 export default function Signup() {
   const dispatch = useDispatch();

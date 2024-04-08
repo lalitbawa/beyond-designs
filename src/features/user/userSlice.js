@@ -1,3 +1,4 @@
+//neccessary imports
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { fetchUserOrders } from './userApi';
 
@@ -7,6 +8,7 @@ const initialState = {
     error: null,
   };
 
+// Create an async thunk to fetch all orders for the current logged in user
 export const fetchUserOrdersAsync = createAsyncThunk(
   'user/fetchUserOrders',
   async (userId) => {
@@ -15,6 +17,7 @@ export const fetchUserOrdersAsync = createAsyncThunk(
   }
 );
 
+// Create a slice to manage the state of the user
 export const userSlice = createSlice({
     name: 'user',
     initialState,

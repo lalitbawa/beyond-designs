@@ -1,3 +1,4 @@
+//necesary imports
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { checkUser, createUser, signOut } from './authAPI';
 
@@ -7,6 +8,7 @@ const initialState = {
   error: null,
 };
 
+// Async thunk to create a user
 export const createUserAsync = createAsyncThunk(
   'user/createUser',
   async (userData) => {
@@ -15,6 +17,7 @@ export const createUserAsync = createAsyncThunk(
   }
 );
 
+// Async thunk to check user login
 export const checkUserAsync = createAsyncThunk(
   'user/checkUser',
   async (loginInfo, { rejectWithValue }) => {
@@ -27,6 +30,7 @@ export const checkUserAsync = createAsyncThunk(
   }
 );
 
+// Async thunk to sign out user
 export const signOutAsync = createAsyncThunk(
   'user/signOut',
   async (_, { rejectWithValue }) => {
@@ -39,6 +43,7 @@ export const signOutAsync = createAsyncThunk(
   }
 );
 
+// Create a slice for the user state
 export const counterSlice = createSlice({
   name: 'user',
   initialState,
@@ -67,11 +72,12 @@ export const counterSlice = createSlice({
       })
       .addCase(signOutAsync.fulfilled, (state) => {
         state.status = 'idle';
-        state.loggedInUser = null; // Clear the loggedInUser state
+        state.loggedInUser = null;
       });
   },
 });
 
+// Selectors to access the user state
 export const selectLoggedInUser = (state) => state.auth.loggedInUser;
 export const selectLoggedInError = (state) => state.auth.error;
 

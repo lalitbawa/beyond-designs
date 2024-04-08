@@ -1,14 +1,17 @@
+//necessary imports
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, Navigate } from 'react-router-dom';
 import logo from '../../../images/logo-white.png'
 import { useForm } from "react-hook-form"
-import { checkUserAsync, selectLoggedInError, selectLoggedInUser } from '../authSlice';
+import { checkUserAsync,selectLoggedInUser } from '../authSlice';
+
+//login page - includes login interface, makes use of react-hook-form for form validation, dispatches checkUserAsync action to check user credentials.
 
 export default function Login() {
   const dispatch = useDispatch();
   const user = useSelector(selectLoggedInUser);
-  const { register, handleSubmit, watch, formState: { errors }, } = useForm();
+  const { register, handleSubmit, formState: { errors }, } = useForm();
   const [error, setError] = useState(null);
 
   return (

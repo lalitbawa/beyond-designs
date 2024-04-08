@@ -1,6 +1,8 @@
+//necessary imports
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { fetchAllProducts } from '../product-list/ProductApi';
 
+// Create an async thunk to fetch all products
 export const fetchAllProductsAsync = createAsyncThunk(
   'product/fetchAllProducts',
   async () => {
@@ -8,7 +10,7 @@ export const fetchAllProductsAsync = createAsyncThunk(
     return response.data;
   }
 );
-
+// Create a slice to manage the state of the products
 const productSlice = createSlice({
   name: 'product',
   initialState: {

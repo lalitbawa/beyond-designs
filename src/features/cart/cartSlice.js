@@ -1,3 +1,4 @@
+//necessary imports
 import { createAsyncThunk, createSlice, createAction } from '@reduxjs/toolkit';
 import { addToCart, fetchItemsByUserId, updateCart, deleteItemFromCart, createOrder,fetchLatestOrder } from './cartAPI';
 
@@ -7,28 +8,31 @@ const initialState = {
   status: 'idle',
 };
 
+//action to clear a cart when user checks out and click on pay now button
+
 export const clearCart = createAction('cart/clearCart');
 
+
+// Async thunk to add an item to the cart
 export const addToCartAsync = createAsyncThunk(
   'cart/addToCart',
   async (item) => {
     const response = await addToCart(item);
-    // The value we return becomes the `fulfilled` action payload
     return response.data;
   }
 );
 
 
-
+// Async thunk to fetch all items in the cart for a given user _id
 export const fetchItemsByUserIdAsync = createAsyncThunk(
   'cart/fetchItemsByUserId',
   async (userId) => {
     const response = await fetchItemsByUserId(userId);
-    // The value we return becomes the `fulfilled` action payload
     return response.data;
   }
 );
 
+// Async thunk to update the quantity of an item in the cart
 export const updateCartAsync = createAsyncThunk(
   'cart/updateCart',
   async ({ itemId, quantity }) => {
@@ -37,6 +41,7 @@ export const updateCartAsync = createAsyncThunk(
   }
 );
 
+// Async thunk to delete an item from the cart
 export const deleteItemFromCartAsync = createAsyncThunk(
   'cart/deleteItemFromCart',
   async (itemId) => {
@@ -45,7 +50,7 @@ export const deleteItemFromCartAsync = createAsyncThunk(
   }
 );
 
-
+// Async thunk to create an order
 export const createOrderAsync = createAsyncThunk(
   'cart/createOrder',
   async (orderData, { dispatch, getState }) => {
@@ -55,10 +60,8 @@ export const createOrderAsync = createAsyncThunk(
     };
     const response = await createOrder(orderDataWithStatus);
 
-    // Get the current cart items from the state
     const cartItems = selectItems(getState());
 
-    // Dispatch deleteItemFromCartAsync for each item in the cart
     cartItems.forEach((item) => {
       dispatch(deleteItemFromCartAsync(item._id));
     });
@@ -67,6 +70,7 @@ export const createOrderAsync = createAsyncThunk(
   }
 );
 
+// Async thunk to fetch the latest order for a given user _id
 export const fetchLatestOrderAsync = createAsyncThunk(
   'cart/fetchLatestOrder',
   async (userId) => {
@@ -75,12 +79,12 @@ export const fetchLatestOrderAsync = createAsyncThunk(
   }
 );
 
+// Create a slice for the user state
 export const counterSlice = createSlice({
   name: 'cart',
   initialState,
   reducers:{
     increment: (state) => {},
-    // Remove the clearCart reducer case
   },
 
   extraReducers: (builder) => {
@@ -124,6 +128,7 @@ export const counterSlice = createSlice({
   },
 });
 
+// Export actions and selectors for the cart slice
 export const { increment } = counterSlice.actions;
 export const selectItems = (state) => state.cart.items;
 export const selectLatestOrder = (state) => state.cart.latestOrder;

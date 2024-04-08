@@ -1,3 +1,4 @@
+//necessary imports
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectLoggedInUser } from '../../auth/authSlice';
@@ -7,7 +8,7 @@ export default function UserOrder() {
     const dispatch = useDispatch();
     const user = useSelector(selectLoggedInUser);
     const orders = useSelector(selectUserOrders);
-  
+  // Fetch the user's orders when the component mounts
     useEffect(() => {
       if (user) {
         dispatch(fetchUserOrdersAsync(user._id));

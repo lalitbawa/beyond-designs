@@ -1,2 +1,4 @@
-navbar child my orders in mobile navbar not working.
-wrong item in ordersuccess page and then add the ss to figma
+fix the links in navbar. company and stores.
+fix the buy again button in userorder 
+you can checkout empty pages. fix it.
+you can access the user password with user api for ex/ users. fix it.

@@ -1,3 +1,4 @@
+//necessary imports
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectItems, updateCartAsync, deleteItemFromCartAsync } from './cartSlice';
@@ -10,18 +11,23 @@ export default function Cart() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+// Calculate the total price of all items in the cart
+
   const getTotalPrice = () => {
     return items.reduce((total, item) => total + parseFloat(item.price.replace('£', '')) * item.quantity, 0);
   };
+  // Calculate the total number of items in the cart
 
   const getTotalItems = () => {
     return items.reduce((total, item) => total + item.quantity, 0);
   };
+  // Handle quantity change for an item in the cart
 
   const handleQuantityChange = (itemId, quantity) => {
     dispatch(updateCartAsync({ itemId, quantity }));
     console.log(itemId, quantity)
   };
+  // Handle removal of an item from the cart
 
   const handleRemoveItem = (itemId) => {
     dispatch(deleteItemFromCartAsync(itemId));
@@ -29,6 +35,8 @@ export default function Cart() {
   };
 
   return (
+    // Cart page layout
+    // The cart page displays a list of items in the cart, along with the quantity and price of each item.
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
         <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Shopping Cart</h1>

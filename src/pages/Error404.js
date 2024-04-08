@@ -1,6 +1,9 @@
+//necessary imports
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Footer from '../features/Footer/Footer'
+
+//display the 404 error page and footer component if you go to a page that doesn't exist (*) in the app routes
 
 export default function Error404() {
   return (

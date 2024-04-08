@@ -1,11 +1,11 @@
-import './App.css';
+//necessary imports
 import LandingPage from './pages/LandingPage';
 import Home from './pages/Home';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import {
   createBrowserRouter,
-  RouterProvider,Route,Link
+  RouterProvider
 } from "react-router-dom";
 import CartPage from './pages/CartPage';
 import Checkout from './pages/Checkout'
@@ -19,6 +19,8 @@ import Error404 from './pages/Error404';
 import OrderSuccessPage from './pages/OrderSuccessPage';
 import UserOrderPage from './pages/UserOrderPage';
 import Logout from './features/auth/components/Logout';
+
+//create the router and define the routes
 
 const router = createBrowserRouter([
   {
@@ -66,6 +68,8 @@ const router = createBrowserRouter([
     element: <Protected><UserOrderPage></UserOrderPage></Protected>,
   }
 ]);
+
+
 
 function App() {
   const dispatch = useDispatch();

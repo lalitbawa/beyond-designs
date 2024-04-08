@@ -1,3 +1,4 @@
+// Function to create a new user
 export function createUser(userData) {
   return new Promise(async (resolve, reject) => {
     try {
@@ -22,7 +23,7 @@ export function createUser(userData) {
   });
 }
 
-
+// Function to check user login
 export function checkUser(loginData) {
   return new Promise(async (resolve, reject) => {
     try {
@@ -49,10 +50,9 @@ export function checkUser(loginData) {
   });
 }
 
+// Function to sign out user
 export function signOut(userId) {
   return new Promise(async (resolve) => {
-    // TODO: on server we will remove user session info
     resolve({ data: 'success' });
   });
 }
-

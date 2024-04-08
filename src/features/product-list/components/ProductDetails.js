@@ -1,34 +1,41 @@
-import { StarIcon } from '@heroicons/react/20/solid'
-import { RadioGroup } from '@headlessui/react'
-import { useState, useEffect } from 'react';
-import { Navigate, useParams } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectAllProducts, selectProductsStatus, fetchAllProductsAsync } from '../ProductSlice';
-import { selectLoggedInUser } from '../../auth/authSlice';
-import { addToCartAsync } from '../../cart/cartSlice';
-import { useNavigate } from 'react-router-dom';
+//necessary imports
+import { RadioGroup } from "@headlessui/react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  selectAllProducts,
+  selectProductsStatus,
+  fetchAllProductsAsync,
+} from "../ProductSlice";
+import { selectLoggedInUser } from "../../auth/authSlice";
+import { addToCartAsync } from "../../cart/cartSlice";
+import { useNavigate } from "react-router-dom";
+
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
 export default function ProductDetails() {
-
   const { productId } = useParams();
   const products = useSelector(selectAllProducts);
   const productsStatus = useSelector(selectProductsStatus);
   const [selectedSize, setSelectedSize] = useState(null);
-  const user= useSelector(selectLoggedInUser);
+  const user = useSelector(selectLoggedInUser);
 
   const navigate = useNavigate();
-  const product = products.find((p) => p._id === (productId));
+
+  // Find the product with the given productId
+  const product = products.find((p) => p._id === productId);
 
   const dispatch = useDispatch();
 
+  // Fetch all products from the store right after the component mounts
   useEffect(() => {
     dispatch(fetchAllProductsAsync());
   }, [dispatch]);
 
-  if (productsStatus === 'loading') {
+  if (productsStatus === "loading") {
     return <div>Loading...</div>;
   }
 
@@ -36,26 +43,27 @@ export default function ProductDetails() {
     return <div>Product not found</div>;
   }
 
-  const imageArray = product.imageSrc ? [
-    product.imageSrc[0],
-    ...product.imageSrc,
-  ] : [];
+  const imageArray = product.imageSrc
+    ? [product.imageSrc[0], ...product.imageSrc]
+    : [];
 
+  // Add the selected product to the cart and navigate to the cart page and sends an alert if no size is selected.
   const handleAddToCart = (e) => {
     e.preventDefault();
     if (!selectedSize) {
-      alert('Please select a size');
-      return; // Exit the function if no size is selected
+      alert("Please select a size");
+      return;
     }
-    const newItem = { ...product, quantity: 1, user: user._id, size: selectedSize };
-    delete newItem['_id'];
+    const newItem = {
+      ...product,
+      quantity: 1,
+      user: user._id,
+      size: selectedSize,
+    };
+    delete newItem["_id"];
     dispatch(addToCartAsync(newItem));
-    navigate('/cart');
+    navigate("/cart");
   };
-
-  const newItem = { ...product, quantity: 1, user: user._id, size: selectedSize };
-  delete newItem['_id'];
-
 
   return (
     <div className="bg-white">
@@ -64,38 +72,12 @@ export default function ProductDetails() {
           <div className="lg:grid lg:auto-rows-min lg:grid-cols-12 lg:gap-x-8">
             <div className="lg:col-span-5 lg:col-start-8">
               <div className="flex justify-between">
-                <h1 className="text-xl font-medium text-gray-900">{product.name}</h1>
-                <p className="text-xl font-medium text-gray-900">{product.price}</p>
-              </div>
-              {/* Reviews */}
-              <div className="mt-4">
-                <h2 className="sr-only">Reviews</h2>
-                <div className="flex items-center">
-                  <p className="text-sm text-gray-700">
-                    {product.rating}
-                    <span className="sr-only"> out of 5 stars</span>
-                  </p>
-                  <div className="ml-1 flex items-center">
-                    {[0, 1, 2, 3, 4].map((rating) => (
-                      <StarIcon
-                        key={rating}
-                        className={classNames(
-                          product.rating > rating ? 'text-gray-400' : 'text-gray-300',
-                          'h-5 w-5 flex-shrink-0'
-                        )}
-                        aria-hidden="true"
-                      />
-                    ))}
-                  </div>
-                  <div aria-hidden="true" className="ml-4 text-sm text-gray-300">
-                    ·
-                  </div>
-                  <div className="ml-4 flex">
-                    <a href="#" className="text-sm font-medium text-gray-600 hover:text-gray-500">
-                      See all {product.reviewCount} reviews
-                    </a>
-                  </div>
-                </div>
+                <h1 className="text-xl font-medium text-gray-900">
+                  {product.name}
+                </h1>
+                <p className="text-xl font-medium text-gray-900">
+                  {product.price}
+                </p>
               </div>
             </div>
 
@@ -110,14 +92,13 @@ export default function ProductDetails() {
                     src={image.src}
                     alt={image.imageAlt}
                     className={classNames(
-                      index === 0 ? 'lg:col-span-2 lg:row-span-2' : '',
-                      'rounded-lg'
+                      index === 0 ? "lg:col-span-2 lg:row-span-2" : "",
+                      "rounded-lg"
                     )}
                   />
                 ))}
               </div>
             </div>
-
 
             <div className="mt-8 lg:col-span-5">
               <form>
@@ -125,33 +106,51 @@ export default function ProductDetails() {
                 <div className="mt-8">
                   <div className="flex items-center justify-between">
                     <h2 className="text-sm font-medium text-gray-900">Size</h2>
-                    <a href="#" className="text-sm font-medium text-gray-600 hover:text-gray-500">
+                    <a
+                      href="#"
+                      className="text-sm font-medium text-gray-600 hover:text-gray-500"
+                    >
                       See sizing chart
                     </a>
                   </div>
 
-                  <RadioGroup value={selectedSize} onChange={setSelectedSize} className="mt-2">
-                    <RadioGroup.Label className="sr-only">Choose a size</RadioGroup.Label>
+                  <RadioGroup
+                    value={selectedSize}
+                    onChange={setSelectedSize}
+                    className="mt-2"
+                  >
+                    <RadioGroup.Label className="sr-only">
+                      Choose a size
+                    </RadioGroup.Label>
                     <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
-                      {product.size[0] && Object.entries(product.size[0]).map(([size, inStock]) => (
-                        <RadioGroup.Option
-                          key={size}
-                          value={size}
-                          className={({ active, checked }) =>
-                            classNames(
-                              inStock ? 'cursor-pointer focus:outline-none' : 'cursor-not-allowed opacity-25',
-                              active ? 'ring-2 ring-gray-500 ring-offset-2' : '',
-                              checked
-                                ? 'border-transparent bg-gray-600 text-white hover:bg-gray-700'
-                                : 'border-gray-200 bg-white text-gray-900 hover:bg-gray-50',
-                              'flex items-center justify-center rounded-md border py-3 px-3 text-sm font-medium uppercase sm:flex-1'
-                            )
-                          }
-                          disabled={!inStock}
-                        >
-                          <RadioGroup.Label as="span">{size.toUpperCase()}</RadioGroup.Label>
-                        </RadioGroup.Option>
-                      ))}
+                      {product.size[0] &&
+                        Object.entries(product.size[0]).map(
+                          ([size, inStock]) => (
+                            <RadioGroup.Option
+                              key={size}
+                              value={size}
+                              className={({ active, checked }) =>
+                                classNames(
+                                  inStock
+                                    ? "cursor-pointer focus:outline-none"
+                                    : "cursor-not-allowed opacity-25",
+                                  active
+                                    ? "ring-2 ring-gray-500 ring-offset-2"
+                                    : "",
+                                  checked
+                                    ? "border-transparent bg-gray-600 text-white hover:bg-gray-700"
+                                    : "border-gray-200 bg-white text-gray-900 hover:bg-gray-50",
+                                  "flex items-center justify-center rounded-md border py-3 px-3 text-sm font-medium uppercase sm:flex-1"
+                                )
+                              }
+                              disabled={!inStock}
+                            >
+                              <RadioGroup.Label as="span">
+                                {size.toUpperCase()}
+                              </RadioGroup.Label>
+                            </RadioGroup.Option>
+                          )
+                        )}
                     </div>
                   </RadioGroup>
                 </div>
@@ -167,7 +166,9 @@ export default function ProductDetails() {
 
               {/* Product details */}
               <div className="mt-10">
-                <h2 className="text-sm font-medium text-gray-900">Description</h2>
+                <h2 className="text-sm font-medium text-gray-900">
+                  Description
+                </h2>
 
                 <div className="prose prose-sm mt-4 text-gray-500">
                   {product.details}
@@ -178,5 +179,5 @@ export default function ProductDetails() {
         </div>
       </div>
     </div>
-  )
+  );
 }

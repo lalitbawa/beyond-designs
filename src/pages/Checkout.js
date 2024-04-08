@@ -1,3 +1,4 @@
+// necessary imports
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -6,6 +7,7 @@ import { selectItems, createOrderAsync} from '../features/cart/cartSlice';
 import { selectLoggedInUser } from '../features/auth/authSlice';
 import Footer from '../features/Footer/Footer'
 
+
 export default function Checkout() {
   const items = useSelector(selectItems);
   const user = useSelector(selectLoggedInUser);
@@ -13,10 +15,12 @@ export default function Checkout() {
   const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm();
 
+  // Calculate the total price of all items in the cart
   const getTotalPrice = () => {
     return items.reduce((total, item) => total + parseFloat(item.price.replace('£', '')) * item.quantity, 0);
   };
 
+  // Create an order with the user's details and items in the cart. sends an object with the user's details and items in the cart to the server to create an order in the orders collection db and redirects the user to the order success page
   const onSubmit = async (data) => {
     const orderData = {
       user: user._id,
@@ -26,7 +30,6 @@ export default function Checkout() {
     
     try {
       await dispatch(createOrderAsync(orderData)).unwrap();
-      // Remove the dispatch(clearCart()) line
       navigate('/ordersuccess');
     } catch (error) {
       console.error('Error creating order:', error);

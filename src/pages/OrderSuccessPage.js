@@ -1,3 +1,4 @@
+//necessary imports
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { selectLoggedInUser } from '../features/auth/authSlice';
@@ -12,6 +13,7 @@ export default function OrderSuccessPage() {
   const order = useSelector(selectLatestOrder);
   const dispatch = useDispatch();
 
+// useEffect hook to fetch the latest order when the component mounts. we display this page after the checkout page so the order will be the latest order.
   useEffect(() => {
     if (user) {
       dispatch(fetchLatestOrderAsync(user._id));
@@ -22,10 +24,12 @@ export default function OrderSuccessPage() {
     return <div>Loading...</div>;
   }
 
+  // function to calculate the total price of the order
   const getTotalPrice = () => {
     return order.items.reduce((total, item) => total + parseFloat(item.price.replace('£', '')) * item.quantity, 0);
   };
 
+  // function to calculate the total number of items in the order
   const getTotalItems = () => {
     return order.items.reduce((total, item) => total + item.quantity, 0);
   };

@@ -1,46 +1,11 @@
-# Getting Started with Create React App and Redux
+Welcome to my Web App. It is created with Html, Tailwind CSS, React and Redux for front-end with various npm packaages that you can find in the package.json file.
+For back-end It makes use of express JS for Rest Api and mongodb as database.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
-## Available Scripts
+For frontend - 
+To get started, extract the beyond-designs folder or download it from my github. Open the terminal inside that folder and type "npm install" to install all the required dependencies. then type "npm start" and it will start the application. for the front end.
 
-In the project directory, you can run:
+For backend - 
+To get started, extract the beyond-designs-backend folder or download it from my github. Again install all the dependencies using "npm install" inside the beyond-designs-backend folder. then type"npm run dev" to start the backend server using nodemon. Please make sure that the application for the backend is running on localhost:8080 as all the api calls from the front-end are made to this port. Also, please make sure the database i am using is connected. if it is connected, it will return "database connected" in the terminal.
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Please note - if you are downloading my back end code from github, you will need to use your own database. However, i have added a sample data file and with a populateDB.js file. Once you have connected your database, you can go to the beyond-designs-backend folder in your terminal and type "node populateDB.js" . By default, it takes the sample data file that i have provided in the backend code. however, you can also use your own database file if the structure is exactly similar. Once you run the populateDB.js file, it will populate the database with products array. rest of the data will not be sent to the database. 

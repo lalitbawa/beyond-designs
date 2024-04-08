@@ -1,3 +1,4 @@
+//necessary imports
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -15,6 +16,7 @@ import {
 } from "@heroicons/react/20/solid";
 import { Link } from "react-router-dom";
 
+//sort options array for the sort dropdown
 const sortOptions = [
   { name: "Relevance", order: "relevance" },
   { name: "Low to High", order: "lowToHigh" },
@@ -32,14 +34,17 @@ export default function ProductList() {
   const [sortOrder, setSortOrder] = useState("relevance");
   const [currentPage, setCurrentPage] = useState(1);
 
+  // Fetch all products from the store right after the component mounts
   useEffect(() => {
     dispatch(fetchAllProductsAsync());
   }, [dispatch]);
 
+  // Function to handle the sort change
   const handleSortChange = (order) => {
     setSortOrder(order);
   };
 
+  // Function to sort the products based on the selected sort order
   const sortProducts = (products, order) => {
     return [...products].sort((a, b) => {
       if (order === "lowToHigh") {
@@ -57,6 +62,7 @@ export default function ProductList() {
     });
   };
 
+  // State to store the selected filters, contains an object with keys for each filter category
   const [selectedFilters, setSelectedFilters] = useState({
     size: [],
     category: [],
@@ -64,6 +70,7 @@ export default function ProductList() {
     price: [],
   });
 
+  // Function to handle the filter change
   const handleFilterChange = (category, value) => {
     setSelectedFilters((prevFilters) => {
       const filters = [...prevFilters[category]];
@@ -77,6 +84,7 @@ export default function ProductList() {
     });
   };
 
+  // Function to filter the products based on the selected filters
   const filteredProducts = products.filter((product) => {
     const matchesSize =
       selectedFilters.size.length === 0 ||
@@ -99,6 +107,7 @@ export default function ProductList() {
 
   const sortedProducts = sortProducts(filteredProducts, sortOrder);
 
+  // Filters menu options
   const filters = {
     price: [
       { value: "0", label: "£0 - £25", checked: false },
@@ -138,8 +147,10 @@ export default function ProductList() {
     return <div>Error fetching products</div>;
   }
 
+  //pagination logic to display 6 products per page on mobile and 12 products per page on desktop with an if else statement
   const productsPerPage = window.innerWidth >= 768 ? 12 : 6;
 
+  //pagination
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = sortedProducts.slice(
@@ -149,6 +160,8 @@ export default function ProductList() {
 
   const totalPages = Math.ceil(sortedProducts.length / productsPerPage);
 
+
+  //clears all the filter values
   const handleClearFilters = () => {
     setSelectedFilters({
       size: [],
@@ -158,6 +171,7 @@ export default function ProductList() {
     });
   };
 
+  //function to handle the page change in pagination and scroll to the top of the page when the page changes smoothly
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -395,32 +409,34 @@ export default function ProductList() {
       {/* Filters end */}
       <div className="bg-white">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-        {currentProducts.map((product) => (
-          <div key={product._id} className="group relative">
-            <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-            <Link to={`/productdetails/${product._id}`}>
-                <img
-                  src={product.imageSrc[0].src}
-                  alt={product.imageSrc[0].imageAlt}
-                  className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                />
-              </Link>
-            </div>
-            <div className="mt-4 flex justify-between">
-              <div>
-                <h3 className="text-sm text-gray-700">
+          <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+            {currentProducts.map((product) => (
+              <div key={product._id} className="group relative">
+                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                   <Link to={`/productdetails/${product._id}`}>
-                    <span aria-hidden="true" className="absolute inset-0" />
-                    {product.name}
+                    <img
+                      src={product.imageSrc[0].src}
+                      alt={product.imageSrc[0].imageAlt}
+                      className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                    />
                   </Link>
-                </h3>
+                </div>
+                <div className="mt-4 flex justify-between">
+                  <div>
+                    <h3 className="text-sm text-gray-700">
+                      <Link to={`/productdetails/${product._id}`}>
+                        <span aria-hidden="true" className="absolute inset-0" />
+                        {product.name}
+                      </Link>
+                    </h3>
+                  </div>
+                  <p className="text-sm font-medium text-gray-900">
+                    {product.price}
+                  </p>
+                </div>
               </div>
-              <p className="text-sm font-medium text-gray-900">{product.price}</p>
-            </div>
+            ))}
           </div>
-        ))}
-      </div>
         </div>
         <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
           <div className="flex flex-1 items-center justify-between sm:hidden">

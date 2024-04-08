@@ -1,7 +1,10 @@
+//necessary imports
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectAllProducts, fetchAllProductsAsync } from '../product-list/ProductSlice';
+
+// Hero section component for the landing page
 
 export default function HeroSection() {
   const dispatch = useDispatch();
@@ -11,6 +14,7 @@ export default function HeroSection() {
     dispatch(fetchAllProductsAsync());
   }, [dispatch]);
 
+  // Get 7 random products from the store
   const getRandomProducts = (count) => {
     const shuffled = [...products].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, count);
