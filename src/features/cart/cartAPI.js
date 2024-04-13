@@ -2,7 +2,7 @@
 // this function adds an item to the cart
 export function addToCart(item) {
   return new Promise(async (resolve) => {
-    const response = await fetch('http://localhost:8080/cart', {
+    const response = await fetch('https://beyond-designs-backend.onrender.com/cart', {
       method: 'POST',
       body: JSON.stringify(item),
       headers: { 'content-type': 'application/json' },
@@ -16,7 +16,7 @@ export function addToCart(item) {
 export function deleteItemFromCart(itemId) {
   return new Promise(async (resolve) => {
     const id = typeof itemId === 'object' ? itemId._id : itemId;
-    const response = await fetch(`http://localhost:8080/cart/${id}`, {
+    const response = await fetch(`https://beyond-designs-backend.onrender.com/cart/${id}`, {
       method: 'DELETE',
       headers: { 'content-type': 'application/json' },
     });
@@ -29,7 +29,7 @@ export function deleteItemFromCart(itemId) {
 // this function updates the quantity of an item in the cart
 export function updateCart(itemId, quantity) {
   return new Promise(async (resolve) => {
-    const response = await fetch(`http://localhost:8080/cart/${itemId}`, {
+    const response = await fetch(`https://beyond-designs-backend.onrender.com/cart/${itemId}`, {
       method: 'PATCH',
       body: JSON.stringify({ quantity }),
       headers: { 'content-type': 'application/json' },
@@ -43,7 +43,7 @@ export function updateCart(itemId, quantity) {
 export function fetchItemsByUserId(userId) {
   return new Promise(async (resolve) => {
     //TODO: we will not hard-code server URL here
-    const response = await fetch('http://localhost:8080/cart/'+userId); 
+    const response = await fetch('https://beyond-designs-backend.onrender.com/cart/'+userId); 
     const data = await response.json()
     resolve({data})
   })
@@ -53,7 +53,7 @@ export function fetchItemsByUserId(userId) {
 // this function creates an order and adds item to the orders collection in the db
 export function createOrder(orderData) {
   return new Promise(async (resolve) => {
-    const response = await fetch('http://localhost:8080/orders', {
+    const response = await fetch('https://beyond-designs-backend.onrender.com/orders', {
       method: 'POST',
       body: JSON.stringify(orderData),
       headers: { 'content-type': 'application/json' },
@@ -66,7 +66,7 @@ export function createOrder(orderData) {
 // this function fetches the latest order for a given user _id
 export function fetchLatestOrder(userId) {
   return new Promise(async (resolve) => {
-    const response = await fetch(`http://localhost:8080/orders?user=${userId}&sort=createdAt&limit=1`);
+    const response = await fetch(`https://beyond-designs-backend.onrender.com/orders?user=${userId}&sort=createdAt&limit=1`);
     const data = await response.json();
     resolve({ data });
   });
