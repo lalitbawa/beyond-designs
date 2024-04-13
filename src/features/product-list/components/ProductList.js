@@ -139,6 +139,16 @@ export default function ProductList() {
     })),
   };
 
+  //clears all the filter values
+  const handleClearFilters = () => {
+    setSelectedFilters({
+      size: [],
+      category: [],
+      season: [],
+      price: [],
+    });
+  };
+  
   if (status === "loading") {
     return <div>Loading...</div>;
   }
@@ -146,10 +156,10 @@ export default function ProductList() {
   if (status === "failed") {
     return <div>Error fetching products</div>;
   }
-
+  
   //pagination logic to display 6 products per page on mobile and 12 products per page on desktop with an if else statement
   const productsPerPage = window.innerWidth >= 768 ? 12 : 6;
-
+  
   //pagination
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -161,15 +171,6 @@ export default function ProductList() {
   const totalPages = Math.ceil(sortedProducts.length / productsPerPage);
 
 
-  //clears all the filter values
-  const handleClearFilters = () => {
-    setSelectedFilters({
-      size: [],
-      category: [],
-      season: [],
-      price: [],
-    });
-  };
 
   //function to handle the page change in pagination and scroll to the top of the page when the page changes smoothly
   const handlePageChange = (pageNumber) => {

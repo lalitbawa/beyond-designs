@@ -88,7 +88,7 @@ export default function Login() {
                       )}
                     </div>
                     {error && (
-                      <p className="mt-1 text-sm text-red-600">{error.message}</p>
+                      <p className="mt-1 text-sm text-red-600">{error}</p>
                     )}
                   </div>
 

@@ -1,4 +1,6 @@
 fix the links in navbar. company and stores.
 fix the buy again button in userorder 
 you can checkout empty pages. fix it.
-you can access the user password with user api for ex/ users. fix it.
+need to change the react icon
+add size chart
+show error at login page

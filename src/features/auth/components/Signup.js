@@ -49,6 +49,7 @@ export default function Signup() {
                     try {
                       await dispatch(createUserAsync({ name: data.name, email: data.email, password: data.password })).unwrap();
                     } catch (error) {
+                      console.log(error);
                       setError(error.toString());
                     }
                   })}
@@ -154,6 +155,9 @@ export default function Signup() {
                         </p>
                       )}
                     </div>
+                    {error && (
+                      <p className="mt-1 text-sm text-red-600">User already exists</p>
+                    )}
                   </div>
 
                   <div>
