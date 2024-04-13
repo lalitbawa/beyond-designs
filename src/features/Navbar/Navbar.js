@@ -175,7 +175,7 @@ export default function Navbar({ Children }) {
                   <span className="sr-only">Eve Logo</span>
                   <img
                     src={logo}
-                    className="h-10 w-auto mr-4"
+                    className="h-8 w-auto mr-6"
                     alt="pookie-image"
                   />
                 </Link>
