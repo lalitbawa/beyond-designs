@@ -1,4 +1,6 @@
 //necessary imports
+//please note that many of tailwind css components above are taken from the tailwind css "https://tailwindui.com/components"
+
 import React, { useState, useEffect } from "react";
 import { Dialog, Popover, Transition } from "@headlessui/react";
 import {
@@ -176,7 +178,7 @@ export default function Navbar({ Children }) {
                   <img
                     src={logo}
                     className="h-8 w-auto mr-6"
-                    alt="pookie-image"
+                    alt="logo"
                   />
                 </Link>
               </div>

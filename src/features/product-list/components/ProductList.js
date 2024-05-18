@@ -1,3 +1,5 @@
+//please note that many of tailwind css components above are taken from the tailwind css "https://tailwindui.com/components"
+
 //necessary imports
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -198,7 +200,7 @@ export default function ProductList() {
                     className="mr-2 h-5 w-5 flex-none text-gray-400 group-hover:text-gray-500"
                     aria-hidden="true"
                   />
-                  2 Filters
+                  Filters
                 </Disclosure.Button>
               </div>
               <div className="pl-6">

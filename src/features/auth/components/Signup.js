@@ -1,4 +1,6 @@
 //necessary imports
+//please note that many of tailwind css components above are taken from the tailwind css "https://tailwindui.com/components"
+
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";

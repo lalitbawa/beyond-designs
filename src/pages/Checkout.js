@@ -1,3 +1,5 @@
+//please note that many of tailwind css components above are taken from the tailwind css "https://tailwindui.com/components"
+
 // necessary imports
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -60,7 +62,7 @@ export default function Checkout() {
               <dd className="mt-1 text-3xl font-bold tracking-tight text-white">{`£${getTotalPrice().toFixed(2)}`}</dd>
             </dl>
 
-            <ul role="list" className="divide-y divide-white divide-opacity-10 text-sm font-medium">
+            <ul  className="divide-y divide-white divide-opacity-10 text-sm font-medium">
               {items.map((item) => (
                 <li key={item._id} className="flex items-start space-x-4 py-6">
                   <img

@@ -1,8 +1,7 @@
-// Function to create a new user
 export function createUser(userData) {
   return new Promise(async (resolve, reject) => {
     try {
-      const response = await fetch("https://beyond-designs-backend.onrender.com/users", {
+      const response = await fetch("http://localhost:8080/users", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -23,13 +22,13 @@ export function createUser(userData) {
   });
 }
 
-// Function to check user login
+
 export function checkUser(loginData) {
   return new Promise(async (resolve, reject) => {
     try {
       const email = loginData.email;
       const password = loginData.password;
-      const response = await fetch(`https://beyond-designs-backend.onrender.com/users/login`, {
+      const response = await fetch(`http://localhost:8080/users/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -50,9 +49,9 @@ export function checkUser(loginData) {
   });
 }
 
-// Function to sign out user
 export function signOut(userId) {
   return new Promise(async (resolve) => {
     resolve({ data: 'success' });
   });
 }
+

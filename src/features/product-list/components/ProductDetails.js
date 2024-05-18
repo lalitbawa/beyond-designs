@@ -1,3 +1,5 @@
+//please note that many of tailwind css components above are taken from the tailwind css "https://tailwindui.com/components"
+
 //necessary imports
 import { RadioGroup } from "@headlessui/react";
 import { useState, useEffect } from "react";
@@ -11,6 +13,7 @@ import {
 import { selectLoggedInUser } from "../../auth/authSlice";
 import { addToCartAsync } from "../../cart/cartSlice";
 import { useNavigate } from "react-router-dom";
+import SizeChartImage from "../../../images/sizechart.png";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -21,6 +24,7 @@ export default function ProductDetails() {
   const products = useSelector(selectAllProducts);
   const productsStatus = useSelector(selectProductsStatus);
   const [selectedSize, setSelectedSize] = useState(null);
+  const [showSizeChart, setShowSizeChart] = useState(false);
   const user = useSelector(selectLoggedInUser);
 
   const navigate = useNavigate();
@@ -106,12 +110,13 @@ export default function ProductDetails() {
                 <div className="mt-8">
                   <div className="flex items-center justify-between">
                     <h2 className="text-sm font-medium text-gray-900">Size</h2>
-                    <a
-                      href="#"
+                    <button
+                      type="button"
+                      onClick={() => setShowSizeChart(true)}
                       className="text-sm font-medium text-gray-600 hover:text-gray-500"
                     >
                       See sizing chart
-                    </a>
+                    </button>
                   </div>
 
                   <RadioGroup
@@ -178,6 +183,41 @@ export default function ProductDetails() {
           </div>
         </div>
       </div>
+
+      {/* Size chart popup */}
+      {showSizeChart && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black bg-opacity-50">
+          <div className="relative mx-auto w-full max-w-lg rounded-lg bg-white p-6">
+            <button
+              type="button"
+              onClick={() => setShowSizeChart(false)}
+              className="absolute top-2 right-2 text-gray-400 hover:text-gray-500"
+            >
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+            <h2 className="mb-4 text-lg font-medium text-gray-900">
+              Size Chart
+            </h2>
+            <img
+              src={SizeChartImage}
+              alt="Size Chart"
+              className="mx-auto max-w-full"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

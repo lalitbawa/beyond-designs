@@ -1,4 +1,6 @@
 //necessary imports
+//please note that many of tailwind css components above are taken from the tailwind css "https://tailwindui.com/components"
+
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { selectLoggedInUser } from '../features/auth/authSlice';

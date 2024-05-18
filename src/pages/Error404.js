@@ -1,3 +1,5 @@
+//please note that many of tailwind css components above are taken from the tailwind css "https://tailwindui.com/components"
+
 //necessary imports
 import React from 'react'
 import { Link } from 'react-router-dom'

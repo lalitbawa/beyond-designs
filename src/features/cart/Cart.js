@@ -1,3 +1,4 @@
+//please note that many of tailwind css components above are taken from the tailwind css "https://tailwindui.com/components"
 //necessary imports
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -25,13 +26,11 @@ export default function Cart() {
 
   const handleQuantityChange = (itemId, quantity) => {
     dispatch(updateCartAsync({ itemId, quantity }));
-    console.log(itemId, quantity)
   };
   // Handle removal of an item from the cart
 
   const handleRemoveItem = (itemId) => {
     dispatch(deleteItemFromCartAsync(itemId));
-    console.log(itemId)
   };
 
   return (
@@ -46,7 +45,7 @@ export default function Cart() {
               Items in your shopping cart
             </h2>
 
-            <ul role="list" className="divide-y divide-gray-200 border-b border-t border-gray-200">
+            <ul className="divide-y divide-gray-200 border-b border-t border-gray-200">
               {items.map((item, itemIdx) => (
                 <li key={`${item._id}-${item.size}`} className="flex py-6 sm:py-10">
                   <div className="flex-shrink-0">

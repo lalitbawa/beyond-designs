@@ -1,6 +1,0 @@
-fix the links in navbar. company and stores.
-fix the buy again button in userorder 
-you can checkout empty pages. fix it.
-need to change the react icon
-add size chart
-show error at login page
